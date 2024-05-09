@@ -58,7 +58,7 @@ namespace Testing3
             //create an instance of the class we want to create
             clsStock Stock = new clsStock();
             //create some test data to assign to the property
-            Int32 TestData = 1;
+            String TestData = "Peterborough VS Cambridge" ;
             //assign the data to the property
             Stock.GameID = TestData;
             //test to see that the two value are the same

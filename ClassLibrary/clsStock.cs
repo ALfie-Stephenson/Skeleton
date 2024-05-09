@@ -11,7 +11,7 @@ namespace ClassLibrary
         public bool InStock { get; set; }
         public DateTime TimeTicketsGoOnSale { get; set; }
         public int StockID { get; set; }
-        public int GameID { get; set; }
+        public String GameID { get; set; }
         public string TicketLocation { get; set; }
         public int StockAmount { get; set; }
         public int TicketPrice { get; set; }
