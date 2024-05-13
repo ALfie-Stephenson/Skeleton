@@ -30,9 +30,11 @@
         <asp:TextBox ID="txtTimeTicketsGoOnSale" runat="server" style="z-index: 1; left: 184px; top: 297px; position: absolute; width: 128px"></asp:TextBox>
         <asp:CheckBox ID="chkInStock" runat="server" style="z-index: 1; left: 184px; top: 348px; position: absolute" Text="Yes" />
         <asp:Label ID="lblError" runat="server" style="z-index: 1; left: 17px; top: 390px; position: absolute"></asp:Label>
-        <asp:Button ID="btnCancel" runat="server" style="z-index: 1; left: 94px; top: 423px; position: absolute" Text="Cancel" />
         <p>
-            <asp:Button ID="btnOK" runat="server" OnClick="btnOK_Click" style="z-index: 1; left: 40px; top: 423px; position: absolute; right: 815px" Text="OK" />
+            <asp:Button ID="btnOK" runat="server" OnClick="btnOK_Click" style="z-index: 1; left: 40px; top: 423px; position: absolute; right: 1445px; height: 30px;" Text="OK" />
+        </p>
+        <p>
+        <asp:Button ID="btnCancel" runat="server" style="z-index: 1; left: 154px; top: 423px; position: absolute" Text="Cancel" />
         </p>
     </form>
 </body>
