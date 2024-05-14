@@ -100,6 +100,153 @@ namespace Testing3
             //test to see that the two value are the same
             Assert.AreEqual(Stock.TicketPrice, TestData);
         }
+        [TestMethod]
+        public void TestStockIDFound()
+        {
+            //create an instance of the class we want to create 
+            clsStock Stock = new clsStock();
+            //create a Boolean variable to store the results of the validation
+            Boolean Found = false;
+            //create a boolean variable to record if the data is ok (assume it is)
+            Boolean OK = true;
+            //create some test data to use with the method 
+            Int32 StockID = 5;
+            //invoke the method
+            Found = Stock.Find(StockID);
+            //check the stock id 
+            if (Stock.StockID != 5)
+            {
+                OK = false; 
+            }
+            //test to see if the result is true 
+            Assert.IsTrue(OK); 
+        }
+        [TestMethod]
+        public void TestGameIDFound()
+        {
+            //create an instance of the class we want to create 
+            clsStock Stock = new clsStock();
+            //create a Boolean variable to store the results of the validation
+            Boolean Found = false;
+            //create a boolean variable to record if the data is ok (assume it is)
+            Boolean OK = true;
+            //create some test data to use with the method 
+            Int32 StockID = 5;
+            //invoke the method
+            Found = Stock.Find(StockID);
+            //check the Game id 
+            if (Stock.GameID != "Peterborough vs Cambridge")
+            {
+                OK = false;
+            }
+            //test to see if the result is true 
+            Assert.IsTrue(OK);
+        }
+        [TestMethod]
+        public void TestTicketLocationFound()
+        {
+            //create an instance of the class we want to create 
+            clsStock Stock = new clsStock();
+            //create a Boolean variable to store the results of the validation
+            Boolean Found = false;
+            //create a boolean variable to record if the data is ok (assume it is)
+            Boolean OK = true;
+            //create some test data to use with the method 
+            Int32 StockID = 5;
+            //invoke the method
+            Found = Stock.Find(StockID);
+            //check the ticket location  
+            if (Stock.TicketLocation != "Grand B")
+            {
+                OK = false;
+            }
+            //test to see if the result is true 
+            Assert.IsTrue(OK);
+        }
+        [TestMethod]
+        public void TestStockAmountFound()
+        {
+            //create an instance of the class we want to create 
+            clsStock Stock = new clsStock();
+            //create a Boolean variable to store the results of the validation
+            Boolean Found = false;
+            //create a boolean variable to record if the data is ok (assume it is)
+            Boolean OK = true;
+            //create some test data to use with the method 
+            Int32 StockID = 5;
+            //invoke the method
+            Found = Stock.Find(StockID);
+            //check the stock amount 
+            if (Stock.StockAmount != 50)
+            {
+                OK = false;
+            }
+            //test to see if the result is true 
+            Assert.IsTrue(OK);
+        }
+        [TestMethod]
+        public void TestTicketPriceFound()
+        {
+            //create an instance of the class we want to create 
+            clsStock Stock = new clsStock();
+            //create a Boolean variable to store the results of the validation
+            Boolean Found = false;
+            //create a boolean variable to record if the data is ok (assume it is)
+            Boolean OK = true;
+            //create some test data to use with the method 
+            Int32 StockID = 5;
+            //invoke the method
+            Found = Stock.Find(StockID);
+            //check the ticket price  
+            if (Stock.TicketPrice != 25)
+            {
+                OK = false;
+            }
+            //test to see if the result is true 
+            Assert.IsTrue(OK);
+        }
+        [TestMethod]
+        public void TestTimeTicketsGoOnSaleFound()
+        {
+            //create an instance of the class we want to create 
+            clsStock Stock = new clsStock();
+            //create a Boolean variable to store the results of the validation
+            Boolean Found = false;
+            //create a boolean variable to record if the data is ok (assume it is)
+            Boolean OK = true;
+            //create some test data to use with the method 
+            Int32 StockID = 5;
+            //invoke the method
+            Found = Stock.Find(StockID);
+            //check the time tickets go on sale
+            if (Stock.TimeTicketsGoOnSale !=Convert.ToDateTime("04/07/2024"))
+            {
+                OK = false;
+            }
+            //test to see if the result is true 
+            Assert.IsTrue(OK);
+        }
+        [TestMethod]
+        public void TestInStockFound()
+        {
+            //create an instance of the class we want to create 
+            clsStock Stock = new clsStock();
+            //create a Boolean variable to store the results of the validation
+            Boolean Found = false;
+            //create a boolean variable to record if the data is ok (assume it is)
+            Boolean OK = true;
+            //create some test data to use with the method 
+            Int32 StockID = 5;
+            //invoke the method
+            Found = Stock.Find(StockID);
+            //check the stock id 
+            if (Stock.InStock != true)
+            {
+                OK = false;
+            }
+            //test to see if the result is true 
+            Assert.IsTrue(OK);
+        }
     }
 }
 
