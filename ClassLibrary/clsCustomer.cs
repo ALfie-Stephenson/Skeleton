@@ -11,5 +11,6 @@ namespace ClassLibrary
         public int CustomerNo { get; set; }
         public long CustomerCardNo { get; set; }
         public int CustomerCVC { get; set; }
+        public object CustomerName { get; set; }
     }
 }
