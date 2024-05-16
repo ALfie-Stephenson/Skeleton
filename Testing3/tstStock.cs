@@ -34,7 +34,7 @@ namespace Testing3
             //create an instance of the class we want to create
             clsStock Stock = new clsStock();
             //create some test data to assign to the property
-            DateTime TestData = DateTime.Now.Date;
+            DateTime TestData = Convert.ToDateTime("15/05/2024");
             //assign the data to the property
             Stock.TimeTicketsGoOnSale = TestData;
             //test to see that the two value are the same
@@ -46,7 +46,7 @@ namespace Testing3
             //create an instance of the class we want to create
             clsStock Stock = new clsStock();
             //create some test data to assign to the property
-            Int32 TestData = 1;
+            Int32 TestData = 6;
             //assign the data to the property
             Stock.StockID = TestData;
             //test to see that the two value are the same
@@ -58,7 +58,7 @@ namespace Testing3
             //create an instance of the class we want to create
             clsStock Stock = new clsStock();
             //create some test data to assign to the property
-            String TestData = "Peterborough VS Cambridge" ;
+            String TestData = "Preston VS MKDons" ;
             //assign the data to the property
             Stock.GameID = TestData;
             //test to see that the two value are the same
@@ -70,7 +70,7 @@ namespace Testing3
             //create an instance of the class we want to create
             clsStock Stock = new clsStock();
             //create some test data to assign to the property
-            string TestData = "GrandB";
+            string TestData = "AwayC";
             //assign the data to the property
             Stock.TicketLocation = TestData;
             //test to see that the two value are the same
@@ -82,7 +82,7 @@ namespace Testing3
             //create an instance of the class we want to create
             clsStock Stock = new clsStock();
             //create some test data to assign to the property
-            Int32 TestData = 1;
+            Int32 TestData = 25;
             //assign the data to the property
             Stock.StockAmount = TestData;
             //test to see that the two value are the same
@@ -94,7 +94,7 @@ namespace Testing3
             //create an instance of the class we want to create
             clsStock Stock = new clsStock();
             //create some test data to assign to the property
-            Int32 TestData = 1;
+            Int32 TestData = 15;
             //assign the data to the property
             Stock.TicketPrice = TestData;
             //test to see that the two value are the same
@@ -110,11 +110,11 @@ namespace Testing3
             //create a boolean variable to record if the data is ok (assume it is)
             Boolean OK = true;
             //create some test data to use with the method 
-            Int32 StockID = 5;
+            Int32 StockID = 6;
             //invoke the method
             Found = Stock.Find(StockID);
             //check the stock id 
-            if (Stock.StockID != 5)
+            if (Stock.StockID != 6)
             {
                 OK = false; 
             }
@@ -131,11 +131,11 @@ namespace Testing3
             //create a boolean variable to record if the data is ok (assume it is)
             Boolean OK = true;
             //create some test data to use with the method 
-            Int32 StockID = 5;
+            Int32 StockID = 6;
             //invoke the method
             Found = Stock.Find(StockID);
             //check the Game id 
-            if (Stock.GameID != "Peterborough vs Cambridge")
+            if (Stock.GameID != "Preston VS MKDons")
             {
                 OK = false;
             }
@@ -152,11 +152,11 @@ namespace Testing3
             //create a boolean variable to record if the data is ok (assume it is)
             Boolean OK = true;
             //create some test data to use with the method 
-            Int32 StockID = 5;
+            Int32 StockID = 6;
             //invoke the method
             Found = Stock.Find(StockID);
             //check the ticket location  
-            if (Stock.TicketLocation != "Grand B")
+            if (Stock.TicketLocation != "AwayC")
             {
                 OK = false;
             }
@@ -173,11 +173,11 @@ namespace Testing3
             //create a boolean variable to record if the data is ok (assume it is)
             Boolean OK = true;
             //create some test data to use with the method 
-            Int32 StockID = 5;
+            Int32 StockID = 6;
             //invoke the method
             Found = Stock.Find(StockID);
             //check the stock amount 
-            if (Stock.StockAmount != 50)
+            if (Stock.StockAmount != 25)
             {
                 OK = false;
             }
@@ -194,11 +194,11 @@ namespace Testing3
             //create a boolean variable to record if the data is ok (assume it is)
             Boolean OK = true;
             //create some test data to use with the method 
-            Int32 StockID = 5;
+            Int32 StockID = 6;
             //invoke the method
             Found = Stock.Find(StockID);
             //check the ticket price  
-            if (Stock.TicketPrice != 25)
+            if (Stock.TicketPrice != 15)
             {
                 OK = false;
             }
@@ -215,11 +215,11 @@ namespace Testing3
             //create a boolean variable to record if the data is ok (assume it is)
             Boolean OK = true;
             //create some test data to use with the method 
-            Int32 StockID = 5;
+            Int32 StockID = 6;
             //invoke the method
             Found = Stock.Find(StockID);
             //check the time tickets go on sale
-            if (Stock.TimeTicketsGoOnSale !=Convert.ToDateTime("04/07/2024"))
+            if (Stock.TimeTicketsGoOnSale !=Convert.ToDateTime("15/05/2024"))
             {
                 OK = false;
             }
@@ -236,7 +236,7 @@ namespace Testing3
             //create a boolean variable to record if the data is ok (assume it is)
             Boolean OK = true;
             //create some test data to use with the method 
-            Int32 StockID = 5;
+            Int32 StockID = 6;
             //invoke the method
             Found = Stock.Find(StockID);
             //check the stock id 
