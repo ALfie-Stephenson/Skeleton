@@ -120,7 +120,7 @@ namespace ClassLibrary
         {
         }
 
-      //public bool InStock { get; set; }
+        //public bool InStock { get; set; }
         //public DateTime TimeTicketsGoOnSale { get; set; }
         //public int StockID { get; set; }
         //public String GameID { get; set; }
@@ -128,18 +128,34 @@ namespace ClassLibrary
         //public int StockAmount { get; set; }
         //public int TicketPrice { get; set; }
 
-        public bool Find(int stockID)
+        public bool Find(int StockID)
         {
-            //set the private data members to the test data value
-            mStockID = 5;
-            mGameID = "Peterborough vs Cambridge";
-            mTicketLocation = "Grand B";
-            mStockAmount = 50;
-            mTicketPrice = 25;
-            mTimeTicketsGoOnSale = Convert.ToDateTime("04/07/2024");
-            mInStock = true;
-            //always return true
-            return true;
+            //create an instance of the data connection
+            clsDataConnection DB = new clsDataConnection();
+            //add parameter for the stock id to search for 
+            DB.AddParameter("@StockID", StockID);
+            //execute the stored procedure
+            DB.Execute("sproc_tblStock_FilterByStockID");
+            //if one record is found (there should be either one or zero
+            if (DB.Count == 1)
+            {
+                //copy the data from the database to the private data members 
+                mStockID = Convert.ToInt32(DB.DataTable.Rows[0]["StockID"]);
+                mGameID = Convert.ToString(DB.DataTable.Rows[0]["GameID"]);
+                mTicketLocation = Convert.ToString(DB.DataTable.Rows[0]["TicketLocation"]);
+                mStockAmount = Convert.ToInt32(DB.DataTable.Rows[0]["StockAmount"]);
+                mTicketPrice = Convert.ToInt32(DB.DataTable.Rows[0]["TicketPrice"]);
+                mTimeTicketsGoOnSale = Convert.ToDateTime(DB.DataTable.Rows[0]["TimeTicketsGoOnSale"]);
+                mInStock = Convert.ToBoolean(DB.DataTable.Rows[0]["InStock"]);
+                //return that everything worked ok 
+                return true;
+            }
+            //if no record was found else
+            else
+            {
+                //return false indicating there is a problem 
+                return false;
+            }
         }
     }
 }
