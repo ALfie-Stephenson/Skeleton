@@ -39,6 +39,5 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //navigate to the view page
         Response.Redirect("CustomerViewer.aspx");
 
-
     }
 }
