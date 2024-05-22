@@ -44,4 +44,30 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
 
 
+
+    protected void btnFind_Click(object sender, EventArgs e)
+    {
+        //create an instance of the customer class
+        clsCustomer Customer = new clsCustomer();
+        //create a variable to store the primary key
+        Int32 CustomerNo;
+        //create a variable to store the result of the find operation
+        Boolean Found = false;
+        //get the primary key entered by the user
+        CustomerNo = Convert.ToInt32(txtCustomerNo.Text);
+        //find the record
+        Found = Customer.Find(CustomerNo);
+        //if found
+        if (Found == true)
+        {
+            //display the values of the properties in the form
+            txtCustomerCardNo.Text = Customer.CustomerCardNo.ToString();
+            txtCustomerCVC.Text = Customer.CustomerCVC.ToString();
+            chkActive.Checked = Customer.AccountActivity;
+            txtCustomerJoinDate.Text = Customer.CustomerJoinDate.ToString();
+            txtCustomerExpiryDate.Text = Customer.CustomerExpiryDate.ToString();
+            txtCustomerAddress.Text = Customer.CustomerAddress;
+            txtCustomerName.Text = Customer.CustomerName;
+        }
+    }
 }

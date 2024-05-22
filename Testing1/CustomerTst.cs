@@ -113,8 +113,8 @@ namespace Testing1
             //test to see that the two values are the same
             Assert.AreEqual(Customer.CustomerCVC, TestData);
         }
-        [TestMethod]
 
+        [TestMethod]
         public void FindMethodOK()
         {
             //create an instance of the class we want to create
@@ -129,6 +129,7 @@ namespace Testing1
             Assert.IsTrue(Found);
         }
 
+
         [TestMethod]
         public void TestCustomerNoFound()
         {
@@ -139,11 +140,11 @@ namespace Testing1
             //create a boolean variable to record if the data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 CustomerNo = 4;
+            Int32 CustomerNo = 6;
             //invoke the method
             Found = Customer.Find(CustomerNo);
             //check the address id
-            if (Customer.CustomerNo != 21)
+            if (Customer.CustomerNo != 6)
             {
                 OK = false;
             }
@@ -161,11 +162,11 @@ namespace Testing1
             //create a boolean variable to record if the data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 CustomerNo = 4;
+            Int32 CustomerNo = 6;
             //invoke the method
             Found = Customer.Find(CustomerNo);
             //check the address id
-            if (Customer.CustomerCardNo != 9999999999999999)
+            if (Customer.CustomerCardNo != 8456219854761270)
             {
                 OK = false;
             }
@@ -183,11 +184,11 @@ namespace Testing1
             //create a boolean variable to record if the data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 CustomerNo = 4;
+            Int32 CustomerNo = 6;
             //invoke the method
             Found = Customer.Find(CustomerNo);
             //check the address id
-            if (Customer.CustomerCVC != 212)
+            if (Customer.CustomerCVC != 196)
             {
                 OK = false;
             }
@@ -205,11 +206,11 @@ namespace Testing1
             //create a boolean variable to record if the data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 CustomerNo = 4;
+            Int32 CustomerNo = 6;
             //invoke the method
             Found = Customer.Find(CustomerNo);
             //check the address id
-            if (Customer.AccountActivity != true)
+            if (Customer.AccountActivity != false)
             {
                 OK = false;
             }
@@ -227,7 +228,7 @@ namespace Testing1
             //create a boolean variable to record if the data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 CustomerNo = 4;
+            Int32 CustomerNo = 6;
             //invoke the method
             Found = Customer.Find(CustomerNo);
             //check the address id
@@ -249,11 +250,11 @@ namespace Testing1
             //create a boolean variable to record if the data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 CustomerNo = 4;
+            Int32 CustomerNo = 6;
             //invoke the method
             Found = Customer.Find(CustomerNo);
             //check the address id
-            if (Customer.CustomerExpiryDate != Convert.ToDateTime("01/06/2027"))
+            if (Customer.CustomerExpiryDate != Convert.ToDateTime("01/04/2028"))
             {
                 OK = false;
             }
@@ -271,11 +272,11 @@ namespace Testing1
             //create a boolean variable to record if the data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 CustomerNo = 4;
+            Int32 CustomerNo = 6;
             //invoke the method
             Found = Customer.Find(CustomerNo);
             //check the address id
-            if (Customer.CustomerAddress != "43 egg street")
+            if (Customer.CustomerAddress != "34 The Asp Way MN7 6GD")
             {
                 OK = false;
             }
@@ -293,11 +294,11 @@ namespace Testing1
             //create a boolean variable to record if the data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 CustomerNo = 4;
+            Int32 CustomerNo = 6;
             //invoke the method
             Found = Customer.Find(CustomerNo);
             //check the address id
-            if (Customer.CustomerName != "Stephen Bunting")
+            if (Customer.CustomerName != "Nathan Aspinall")
             {
                 OK = false;
             }
