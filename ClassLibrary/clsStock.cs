@@ -157,5 +157,86 @@ namespace ClassLibrary
                 return false;
             }
         }
+
+        public string Valid(string gameID, string ticketLocation, string stockAmount, string ticketPrice, string timeTicketsGoOnSale)
+        {
+            //create a string variable to store the error 
+            String Error = "";
+            //create a temporary variable to store the date values
+            DateTime DateTemp;
+            //if the GameID is blank
+            if (gameID.Length == 0)
+            {
+                //record the error
+                Error = Error + "The GameID may not be blank : ";
+            }
+            //if the Game ID is greater than 50 than 50 characters 
+            if (gameID.Length > 50) 
+            {
+                //record the error
+                Error = Error + "The Game ID must be less than 50 characters :  ";
+            }
+
+            DateTime DateComp = DateTime.Now.Date;
+
+            try
+            {
+                //copy the time tickets go on sale value
+                DateTemp = Convert.ToDateTime(timeTicketsGoOnSale);
+                //check to see if the date is less than todays date
+                if (DateTemp < DateComp)
+                {
+                     Error = Error + "The date cannot be in the past : ";
+                }
+                if (DateTemp > DateTime.Now.Date.AddYears(10))
+                {
+                Error = Error + "The date cannot be that far into the future : ";
+                }
+            }
+            catch
+            {
+                //record the error
+                Error = Error + "The date was Not a valid date : ";
+            }
+            //if the ticket location is blank
+            if (ticketLocation.Length == 0)
+            {
+                //record the error
+                Error = Error + "The Ticket Location may not be blank : ";
+            }
+            //if the ticket location is greater than 50 than 50 characters 
+            if (ticketLocation.Length > 50)
+            {
+                //record the error
+                Error = Error + "The Ticket Location must be less than 50 characters :  ";
+            }
+            //if the stock amount is blank
+            if (stockAmount.Length == 0)
+            {
+                //record the error
+                Error = Error + "The stock amount may not be blank : ";
+            }
+            //if the stock amount is greater than 50 than 50 characters 
+            if (stockAmount.Length > 10)
+            {
+                //record the error
+                Error = Error + "The Stock amount must be less than 50 characters :  ";
+            }
+            //if the stock amount is blank
+            if (ticketPrice.Length == 0)
+            {
+                //record the error
+                Error = Error + "The ticket price may not be blank : ";
+            }
+            //if the stock amount is greater than 50 than 50 characters 
+            if (ticketPrice.Length > 10)
+            {
+                //record the error
+                Error = Error + "The TicketPrice must be less than 50 characters :  ";
+            }
+            //return any error messages 
+            return Error;
+
+        }
     }
 }
