@@ -26,7 +26,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //capture Stock check Box
         AnOrder.Stock = chkInStock.Checked;
         //Capture Order colour (Ticket colour)
-        AnOrder.Colour = txtOrderColour.Text;
+        AnOrder.OrderColour = txtOrderColour.Text;
         //Capture the Price
         AnOrder.Price = Convert.ToInt32(txtPrice.Text);
         //store the Order in the session object
