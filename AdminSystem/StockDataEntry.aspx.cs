@@ -18,21 +18,44 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //create a new instance of clsStock
         clsStock Stock = new clsStock();
         //capture game ID
-        Stock.GameID = txtGameID.Text;
+        string GameID = txtGameID.Text;
         //capture ticket location
-        Stock.TicketLocation = txtTicketLocation.Text;
+        string TicketLocation = txtTicketLocation.Text;
         //capture stock amount
-        Stock.StockAmount = Convert.ToInt32(txtStockAmount.Text);
+        string StockAmount = txtStockAmount.Text;
         //capture ticket price
-        Stock.TicketPrice = Convert.ToInt32(txtTicketPrice.Text);
+        string TicketPrice = txtTicketPrice.Text;
         //capture time tickets go on sale
-        Stock.TimeTicketsGoOnSale = Convert.ToDateTime(txtTimeTicketsGoOnSale.Text);
+        string TimeTicketsGoOnSale = txtTimeTicketsGoOnSale.Text;
         //capture in stock
-        Stock.InStock = chkInStock.Checked;
-        //store the stock in the stock object
-        Session["Stock"] = Stock;
-        //navigate to view page
-        Response.Redirect("StockViewer.aspx");
+        string InStock = chkInStock.Text;
+        //variable tpo store any error messages
+        string Error = "";
+        //validate the data
+        Error = Stock.Valid(GameID, TicketLocation, StockAmount, TicketPrice, TimeTicketsGoOnSale);
+        if (Error == "")
+        {
+            //capture the Game ID
+            Stock.GameID = GameID;
+            //capture the ticket location
+            Stock.TicketLocation = TicketLocation;
+            //capture the Stock amount
+            Stock.StockAmount = Convert.ToInt32(StockAmount);
+            //capture the ticket price
+            Stock.TicketPrice = Convert.ToInt32(TicketPrice);
+            // capture the time tickets go on sale 
+            Stock.TimeTicketsGoOnSale = Convert.ToDateTime(TimeTicketsGoOnSale);
+            //store the stock in the session object
+            Session["Stock"] = Stock;
+            //navigate to the view page
+            Response.Redirect("StockViewer.aspx");
+        }
+        else
+        {
+            //display the error message
+            lblError.Text = Error;
+        }
+
     }
 
     protected void btnFind_Click(object sender, EventArgs e)
