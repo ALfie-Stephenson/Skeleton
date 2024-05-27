@@ -740,7 +740,7 @@ namespace Testing3
             Assert.AreNotEqual(Error, "");
         }
         [TestMethod]
-        public void TimeTicketGoOnSaleExtremeMin()
+         public void TimeTicketGoOnSaleExtremeMin()
         {
             //create instance of the class we want to create 
             clsStock Stock = new clsStock();
