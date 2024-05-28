@@ -45,10 +45,17 @@ public partial class _1_DataEntry : System.Web.UI.Page
             Stock.TicketPrice = Convert.ToInt32(TicketPrice);
             // capture the time tickets go on sale 
             Stock.TimeTicketsGoOnSale = Convert.ToDateTime(TimeTicketsGoOnSale);
-            //store the stock in the session object
-            Session["Stock"] = Stock;
-            //navigate to the view page
-            Response.Redirect("StockViewer.aspx");
+            //capture Instock
+            Stock.InStock = chkInStock.Checked;
+            //create a new instance of the stock collection
+            clsStockCollection StockList = new clsStockCollection();
+            //set the thisstock property
+            StockList.ThisStock = Stock;
+            //add the new record 
+            StockList.Add();
+            //redirect back to the list page
+            Response.Redirect("StockList.aspx");
+
         }
         else
         {
