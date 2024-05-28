@@ -10,7 +10,36 @@
     <form id="form1" runat="server">
         <div>
         </div>
-        <asp:ListBox ID="lstStockList" runat="server" style="z-index: 1; left: 10px; top: 34px; position: absolute; height: 477px; width: 490px"></asp:ListBox>
+        <asp:ListBox ID="lstStockList" runat="server" style="z-index: 1; left: 89px; top: 37px; position: absolute; height: 477px; width: 490px"></asp:ListBox>
+        <p>
+            &nbsp;</p>
+        <p>
+            &nbsp;</p>
+        <p>
+            &nbsp;</p>
+        <p>
+            &nbsp;</p>
+        <p>
+            &nbsp;</p>
+        <p>
+            &nbsp;</p>
+        <p>
+            &nbsp;</p>
+        <p>
+            &nbsp;</p>
+        <p>
+            &nbsp;</p>
+        <p>
+            &nbsp;</p>
+        <p>
+            &nbsp;</p>
+        <p>
+            &nbsp;</p>
+        <p>
+            &nbsp;</p>
+        <p>
+            <asp:Button ID="btnAdd" runat="server" OnClick="btnAdd_Click" Text="Add" />
+        </p>
     </form>
 </body>
 </html>
