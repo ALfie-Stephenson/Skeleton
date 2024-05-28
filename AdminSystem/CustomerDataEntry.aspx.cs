@@ -24,6 +24,8 @@ public partial class _1_DataEntry : System.Web.UI.Page
         Customer.CustomerName = txtCustomerName.Text;
         //capture the customer address
         Customer.CustomerAddress = txtCustomerAddress.Text;
+        //capture the customer email address
+        Customer.CustomerEmailAddress = txtCustomerEmailAddress.Text;
         //capture the card no
         Customer.CustomerCardNo = Convert.ToInt64(txtCustomerCardNo.Text);
         //capture the card expiry
@@ -68,6 +70,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
             txtCustomerExpiryDate.Text = Customer.CustomerExpiryDate.ToString();
             txtCustomerAddress.Text = Customer.CustomerAddress;
             txtCustomerName.Text = Customer.CustomerName;
+            txtCustomerEmailAddress.Text = Customer.CustomerEmailAddress;
         }
     }
 }
