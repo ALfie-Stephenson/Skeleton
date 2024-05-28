@@ -135,18 +135,35 @@ namespace ClassLibrary
         //public bool Stock { get; set; }
         //public int OrderId { get; set; }
 
-        public bool Find(int orderId)
+        public bool Find(int OrderId)
         {
-            //set the private data members to the test data value
-            mOrderId = 21;
-            mDateAdded = Convert.ToDateTime("23/05/2024");
-            mOrderColour = "Red";
-            mStock = true;
-            mOrderSummary = "Standard E-ticket + Physical Row Z 215-217";
-            mPrice = 55;
-            mOrderNo = 1;
-            //always return true
-            return true;
+            //create an instance of the data connection
+            clsDataConnection DB = new clsDataConnection(); 
+            //add the parameter for the address id to search for 
+            DB.AddParameter("@OrderId", OrderId);
+            //execute the stored procedure
+            DB.Execute("sproc_tblOrder_FilterOrderId");
+            //if one record is found (there should be either one or zero)
+            if (DB.Count == 1)
+            {
+                //copy the data from the database to the private data members
+                mOrderId = Convert.ToInt32(DB.DataTable.Rows[0]["OrderId"]);
+                mDateAdded = Convert.ToDateTime(DB.DataTable.Rows[0]["DateAdded"]);
+                mOrderColour = Convert.ToString(DB.DataTable.Rows[0]["OrderColour"]);
+                mStock = Convert.ToBoolean(DB.DataTable.Rows[0]["Active"]);
+                mOrderSummary = Convert.ToString(DB.DataTable.Rows[0]["OrderSummary"]);
+                mPrice = Convert.ToInt32(DB.DataTable.Rows[0]["Price"]);
+                mOrderNo = Convert.ToInt32(DB.DataTable.Rows[0]["OrderNo"]);
+                //return that everyhting worked OK
+                return true;
+
+            }
+            //if no record was found 
+            else
+            {
+                //return false indicating there was a problem
+                return false;   
+            }
         }
     }
 }
