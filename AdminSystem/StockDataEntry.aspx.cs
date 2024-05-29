@@ -8,9 +8,11 @@ using ClassLibrary;
 
 public partial class _1_DataEntry : System.Web.UI.Page
 {
+    //variable to store the primary key with page level scope
+    Int32 StockID;
     protected void Page_Load(object sender, EventArgs e)
     {
-
+   
     }
 
     protected void btnOK_Click(object sender, EventArgs e)
@@ -35,6 +37,8 @@ public partial class _1_DataEntry : System.Web.UI.Page
         Error = Stock.Valid(GameID, TicketLocation, StockAmount, TicketPrice, TimeTicketsGoOnSale);
         if (Error == "")
         {
+            //capture the Stock ID
+            Stock.StockID = StockID;
             //capture the Game ID
             Stock.GameID = GameID;
             //capture the ticket location
@@ -49,13 +53,27 @@ public partial class _1_DataEntry : System.Web.UI.Page
             Stock.InStock = chkInStock.Checked;
             //create a new instance of the stock collection
             clsStockCollection StockList = new clsStockCollection();
-            //set the thisstock property
-            StockList.ThisStock = Stock;
-            //add the new record 
-            StockList.Add();
+
+            //if this is a new record i.e. stockID = -1 then add the data 
+            if (StockID == -1)
+            {   
+                //set the thisstock property
+                StockList.ThisStock = Stock;
+                //add the new record 
+                StockList.Add();
+                
+            }
+            else
+            {
+                StockList.ThisStock.Find(StockID);
+                //set this stock property
+                StockList.ThisStock = Stock;
+                //update the record
+                StockList.Update();
+
+            }
             //redirect back to the list page
             Response.Redirect("StockList.aspx");
-
         }
         else
         {
@@ -89,5 +107,20 @@ public partial class _1_DataEntry : System.Web.UI.Page
             chkInStock.Checked = Stock.InStock;
         }
 
+    }
+    void DisplayStock()
+    {
+        //create an instance of the address book
+        clsStockCollection StockBook = new clsStockCollection();
+        //find the record to update
+        StockBook.ThisStock.Find(StockID);
+        //display the data for the record
+        txtStockID.Text = StockBook.ThisStock.StockID.ToString();
+        txtGameID.Text = StockBook.ThisStock.GameID.ToString();
+        txtTicketLocation.Text = StockBook.ThisStock.TicketLocation.ToString();
+        txtStockAmount.Text = StockBook.ThisStock.StockAmount.ToString();
+        txtTicketPrice.Text = StockBook.ThisStock.TicketPrice.ToString();
+        txtTimeTicketsGoOnSale.Text = StockBook.ThisStock.TimeTicketsGoOnSale.ToString();
+        chkInStock.Checked = StockBook.ThisStock.InStock;
     }
 }
