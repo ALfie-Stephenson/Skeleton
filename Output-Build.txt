@@ -1,18 +1,18 @@
-﻿Build started at 21:39...
+﻿Build started at 12:54...
 1>------ Build started: Project: ClassLibrary, Configuration: Debug Any CPU ------
 1>  ClassLibrary -> H:\Documents\Y2\M4\GithubRepository\GITHUB\bosh\ClassLibrary\bin\Debug\ClassLibrary.dll
 2>------ Build started: Project: CustomerTesting, Configuration: Debug Any CPU ------
 3>------ Build started: Project: StockTesting, Configuration: Debug Any CPU ------
 4>------ Build started: Project: OrderTesting, Configuration: Debug Any CPU ------
 5>------ Build started: Project: Testing6, Configuration: Debug Any CPU ------
+2>  CustomerTesting -> H:\Documents\Y2\M4\GithubRepository\GITHUB\bosh\Testing1\bin\Debug\Testing1.dll
 6>------ Build started: Project: AdminSystem, Configuration: Debug Any CPU ------
 6>Validating Web Site
-2>  CustomerTesting -> H:\Documents\Y2\M4\GithubRepository\GITHUB\bosh\Testing1\bin\Debug\Testing1.dll
-4>  OrderTesting -> H:\Documents\Y2\M4\GithubRepository\GITHUB\bosh\Testing4\bin\Debug\Testing4.dll
 3>  StockTesting -> H:\Documents\Y2\M4\GithubRepository\GITHUB\bosh\Testing3\bin\Debug\Testing3.dll
-5>  Testing6 -> H:\Documents\Y2\M4\GithubRepository\GITHUB\bosh\Testing6\bin\Debug\Testing6.dll
+4>  OrderTesting -> H:\Documents\Y2\M4\GithubRepository\GITHUB\bosh\Testing4\bin\Debug\Testing4.dll
 6>Building directory '/'.
+5>  Testing6 -> H:\Documents\Y2\M4\GithubRepository\GITHUB\bosh\Testing6\bin\Debug\Testing6.dll
 6>
 6>Validation Complete
 ========== Build: 6 succeeded, 0 failed, 2 up-to-date, 0 skipped ==========
-========== Build completed at 21:40 and took 06.025 seconds ==========
+========== Build completed at 12:54 and took 09.368 seconds ==========
