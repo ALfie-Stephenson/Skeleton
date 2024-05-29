@@ -118,8 +118,8 @@ namespace Testing4
             clsOrder AnOrder = new clsOrder();
             //create a Boolean variable to store the results of the validation
             Boolean Found = false;
-            //create some tes data to use with the method 
-            Int32 OrderId = 21;
+            //create some test data to use with the method 
+            Int32 OrderId = 8;
             //invoke the method
             Found = AnOrder.Find(OrderId);
             Assert.IsTrue(Found);
@@ -136,11 +136,11 @@ namespace Testing4
             //create a boolean variable to record if the data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 OrderId = 21;
+            Int32 OrderId = 8;
             //invoke the method 
             Found = AnOrder.Find(OrderId);
             //chck the order Id
-            if (AnOrder.OrderId != 21)
+            if (AnOrder.OrderId != 8)
             {
                 OK = false;
             }
@@ -159,11 +159,11 @@ namespace Testing4
             //create a Boolean variable to record if the data is OK (assume it is)
             Boolean OK = true;
             //create dome test data to use with the method
-            Int32 OrderId = 21;
+            Int32 OrderId = 8;
             //invoke the method
             Found = AnOrder.Find(OrderId);
             //check the dateAdded property
-            if (AnOrder.DateAdded != Convert.ToDateTime("23/05/2024"))
+            if (AnOrder.DateAdded != Convert.ToDateTime("2024-05-30"))
             {
                 OK = false;
             }
@@ -182,7 +182,7 @@ namespace Testing4
             //create a Boolean variable to record if data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method 
-            Int32 OrderId = 21;
+            Int32 OrderId = 8;
             //invoke the method
             Found = AnOrder.Find(OrderId);
             //check the twon property
@@ -205,7 +205,7 @@ namespace Testing4
             //create a Boolean variable to record if data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 OrderId = 21;
+            Int32 OrderId = 8;
             //invoke the method
             Found = AnOrder.Find(OrderId);
             //check the Stock property
@@ -228,11 +228,11 @@ namespace Testing4
             //create a Boolean variable to record if data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 OrderId = 21;
+            Int32 OrderId = 8;
             //invoke the method
             Found = AnOrder.Find(OrderId);
             //check the street property
-            if (AnOrder.OrderSummary != "Standard E-ticket + Physical Row Z 215-217")
+            if (AnOrder.OrderSummary != "Standard E ticket, Row A 1-3")
             {
                 OK = false;
             }
@@ -251,11 +251,11 @@ namespace Testing4
             //create a Boolean variable to record if data is OK
             Boolean OK = true;
             //create some test data to use with the method 
-            Int32 OrderId = 21;
+            Int32 OrderId = 8;
             //invoke the method 
             Found = AnOrder.Find(OrderId);
             //check the price property
-            if (AnOrder.Price != 55)
+            if (AnOrder.Price != 450)
             {
                 OK = false;
             }
@@ -274,11 +274,11 @@ namespace Testing4
             //create a Boolean variable to record if data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method 
-            Int32 OrderId = 21;
+            Int32 OrderId = 8;
             //invoke the method
             Found = AnOrder.Find(OrderId);
             //check the street property
-            if (AnOrder.OrderNo != 1)
+            if (AnOrder.OrderNo != 5)
             {
                 OK = false;
             }
