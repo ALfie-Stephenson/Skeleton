@@ -7,7 +7,7 @@
     <title></title>
 </head>
 <body style="height: 350px">
-      This is the order data entry page
+      fThis is the order data entry page
     <form id="form1" runat="server">
         <div>
         <asp:TextBox ID="txtOrderId" runat="server" style="z-index: 1; left: 204px; top: 82px; position: absolute; height: 25px;" width="188px"></asp:TextBox>
@@ -33,7 +33,6 @@
             <asp:CheckBox ID="chkInStock" runat="server" style="z-index: 1; left: 202px; top: 331px; position: absolute" Text="In Stock" />
         </p>
         <asp:Label ID="lblError" runat="server" style="z-index: 1; left: 12px; top: 370px; position: absolute"></asp:Label>
-        <asp:Button ID="btnCancel" runat="server" style="z-index: 1; left: 132px; top: 423px; position: absolute; margin-top: 1px" Text="Cancel" />
         <asp:Button ID="btnOK" runat="server" OnClick="btnOK_Click" style="z-index: 1; left: 13px; top: 424px; position: absolute; height: 35px; right: 1137px;" Text="OK" width="90px" />
         <p>
         <asp:Button ID="btnCancel0" runat="server" style="z-index: 1; left: 132px; top: 426px; position: absolute; margin-top: 1px" Text="Cancel" />

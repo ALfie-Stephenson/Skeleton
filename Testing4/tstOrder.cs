@@ -305,7 +305,7 @@ namespace Testing4
             //string variable to store any error message
             string Error = "";
             //invoke the method 
-            Error = AnOrder.Valid(OrderColour, OrderSummary, DateAddded, Price, OrderNo);
+            Error = AnOrder.Valid(OrderColour, OrderSummary, DateAdded, Price, OrderNo);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }

@@ -165,5 +165,10 @@ namespace ClassLibrary
                 return false;   
             }
         }
+
+        public string Valid(string orderColour, string orderSummary, object dateAddded, string price, string orderNo)
+        {
+            return "";
+        }
     }
 }
