@@ -8,6 +8,16 @@ namespace Testing4
     [TestClass]
     public class tstorder
     {
+
+        //good test data
+        //create some test data to pass the method
+        string OrderNo = "5";
+        string OrderSummary = "Standard E ticket Row A 1-3";
+        string OrderColour = "Red";
+        string Price = "450";
+        string DateAdded = DateTime.Now.ToShortDateString();
+
+         
         [TestMethod]
         public void InstanceOK()
         {
@@ -285,6 +295,21 @@ namespace Testing4
             //test to see if result is correct
             Assert.IsTrue(OK);
         }
+
+        [TestMethod]
+
+        public void ValidMethodOK()
+        {
+            //create an instance of the class we want to create
+            clsOrder AnOrder = new clsOrder();
+            //string variable to store any error message
+            string Error = "";
+            //invoke the method 
+            Error = AnOrder.Valid(OrderColour, OrderSummary, DateAddded, Price, OrderNo);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
     }
 }
 
