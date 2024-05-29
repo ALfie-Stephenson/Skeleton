@@ -21,26 +21,47 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //capture the customer no
         Customer.CustomerNo = Convert.ToInt32(txtCustomerNo.Text);
         //capture the customer name
-        Customer.CustomerName = txtCustomerName.Text;
+        string CustomerName = txtCustomerName.Text;
         //capture the customer address
-        Customer.CustomerAddress = txtCustomerAddress.Text;
+        string CustomerAddress = txtCustomerAddress.Text;
         //capture the customer email address
-        Customer.CustomerEmailAddress = txtCustomerEmailAddress.Text;
+        string CustomerEmailAddress = txtCustomerEmailAddress.Text;
         //capture the card no
         Customer.CustomerCardNo = Convert.ToInt64(txtCustomerCardNo.Text);
         //capture the card expiry
-        Customer.CustomerExpiryDate = Convert.ToDateTime(txtCustomerExpiryDate.Text);
+        string CustomerExpiryDate = (txtCustomerExpiryDate.Text);
         //capture the card cvc
         Customer.CustomerCVC = Convert.ToInt32(txtCustomerCVC.Text);
         //capture the join date
-        Customer.CustomerJoinDate = Convert.ToDateTime(DateTime.Now);
+        string CustomerJoinDate = (txtCustomerJoinDate.Text);
         //capture the account activity
         Customer.AccountActivity = chkActive.Checked;
-        //store the name in the session object
-        Session["Customer"] = Customer;
-        //navigate to the view page
-        Response.Redirect("CustomerViewer.aspx");
-
+        //variable to store any error messages
+        string Error = "";
+        //validate the data
+        Error = Customer.Valid(CustomerName, CustomerAddress, CustomerEmailAddress, CustomerExpiryDate, CustomerJoinDate);
+        if (Error == "")
+        {
+            //capture the customer name
+            Customer.CustomerName = CustomerName;
+            //capture the customer address
+            Customer.CustomerAddress = CustomerAddress;
+            //capture the customer email address
+            Customer.CustomerEmailAddress = CustomerEmailAddress;
+            //capture the customer expiry date
+            Customer.CustomerExpiryDate = Convert.ToDateTime(CustomerExpiryDate);
+            //capture the customer join date
+            Customer.CustomerJoinDate = Convert.ToDateTime(CustomerJoinDate);
+            //store the name in the session object
+            Session["Customer"] = Customer;
+            //navigate to the view page
+            Response.Redirect("CustomerViewer.aspx");
+        }
+        else
+        {
+            //display the error message
+            lblError.Text = Error;
+        }
 
     }
 
