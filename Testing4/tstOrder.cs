@@ -231,8 +231,8 @@ namespace Testing4
             Int32 OrderId = 8;
             //invoke the method
             Found = AnOrder.Find(OrderId);
-            //check the street property
-            if (AnOrder.OrderSummary != "Standard E ticket, Row A 1-3")
+            //check the summary property
+            if (AnOrder.OrderSummary != "Standard E ticket , Row A 1-3")
             {
                 OK = false;
             }

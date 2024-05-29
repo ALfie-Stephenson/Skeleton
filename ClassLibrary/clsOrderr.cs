@@ -150,7 +150,7 @@ namespace ClassLibrary
                 mOrderId = Convert.ToInt32(DB.DataTable.Rows[0]["OrderId"]);
                 mDateAdded = Convert.ToDateTime(DB.DataTable.Rows[0]["DateAdded"]);
                 mOrderColour = Convert.ToString(DB.DataTable.Rows[0]["OrderColour"]);
-                mStock = Convert.ToBoolean(DB.DataTable.Rows[0]["Active"]);
+                mStock = Convert.ToBoolean(DB.DataTable.Rows[0]["Stock"]);
                 mOrderSummary = Convert.ToString(DB.DataTable.Rows[0]["OrderSummary"]);
                 mPrice = Convert.ToInt32(DB.DataTable.Rows[0]["Price"]);
                 mOrderNo = Convert.ToInt32(DB.DataTable.Rows[0]["OrderNo"]);
