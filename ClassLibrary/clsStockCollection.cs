@@ -56,34 +56,12 @@ namespace ClassLibrary
         
         public clsStockCollection()
         {
-            //variable for the index
-            Int32 Index = 0;
-            //variable to store the record count
-            Int32 RecordCount = 0;
-            //object for the data connect
+            //object for data connection
             clsDataConnection DB = new clsDataConnection();
-            //execute the stored procedure
-            DB.Execute("sproc_tblStock_SelectAll");
-            //get the record of count
-            RecordCount = DB.Count;
-            // while there are records to process
-            while (Index <RecordCount)
-            {
-                //create a blank address 
-                clsStock Stock = new clsStock();
-                //read in the fields for the current record
-                Stock.StockID = Convert.ToInt32(DB.DataTable.Rows[Index]["StockID"]);
-                Stock.GameID = Convert.ToString(DB.DataTable.Rows[Index]["GameID"]);
-                Stock.TicketLocation = Convert.ToString(DB.DataTable.Rows[Index]["TicketLocation"]);
-                Stock.StockAmount = Convert.ToInt32(DB.DataTable.Rows[Index]["StockAmount"]);
-                Stock.TicketPrice = Convert.ToInt32(DB.DataTable.Rows[Index]["TicketPrice"]);
-                Stock.TimeTicketsGoOnSale = Convert.ToDateTime(DB.DataTable.Rows[Index]["TimeTicketsGoOnSale"]);
-                Stock.InStock = Convert.ToBoolean(DB.DataTable.Rows[Index]["InStock"]);
-                //add the record to the private data member
-                mStockList.Add(Stock);
-                //point at the next record
-                Index++;
-            }
+            //execute the stored procedure 
+            DB.Execute("sproc_tblStock_selectAll");
+            //populate array list with the data table
+            PopulateArray(DB);
         }
 
         public int Add()
@@ -130,6 +108,48 @@ namespace ClassLibrary
             DB.AddParameter("@StockID", mThisStock.StockID);
             //execute the stored procedure
             DB.Execute("sproc_tblStock_Delete");
+        }
+
+        public void ReportByGameID(string GameID)
+        {
+            //filters the record pointed to by the stock
+            //connect to the database
+            clsDataConnection DB = new clsDataConnection();
+            //set the parameters for the stored procedure
+            DB.AddParameter("@GameID", GameID);
+            //execute the stored procedure
+            DB.Execute("sproc_tblStock_FilterByGameID");
+            //populate the array list with the data table 
+            PopulateArray(DB);
+        }
+        void PopulateArray(clsDataConnection DB)
+        {
+            //variable for the index
+            Int32 Index = 0;
+            //variable to store the record count
+            Int32 RecordCount;
+            //object for the data connect
+            RecordCount = DB.Count;
+            //clear the private list array
+            mStockList = new List<clsStock>();
+            // while there are records to process
+            while (Index < RecordCount)
+            {
+                //create a blank address 
+                clsStock Stock = new clsStock();
+                //read in the fields for the current record
+                Stock.StockID = Convert.ToInt32(DB.DataTable.Rows[Index]["StockID"]);
+                Stock.GameID = Convert.ToString(DB.DataTable.Rows[Index]["GameID"]);
+                Stock.TicketLocation = Convert.ToString(DB.DataTable.Rows[Index]["TicketLocation"]);
+                Stock.StockAmount = Convert.ToInt32(DB.DataTable.Rows[Index]["StockAmount"]);
+                Stock.TicketPrice = Convert.ToInt32(DB.DataTable.Rows[Index]["TicketPrice"]);
+                Stock.TimeTicketsGoOnSale = Convert.ToDateTime(DB.DataTable.Rows[Index]["TimeTicketsGoOnSale"]);
+                Stock.InStock = Convert.ToBoolean(DB.DataTable.Rows[Index]["InStock"]);
+                //add the record to the private data member
+                mStockList.Add(Stock);
+                //point at the next record
+                Index++;
+            }
         }
     }
 }

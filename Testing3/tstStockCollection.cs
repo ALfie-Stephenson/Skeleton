@@ -2,6 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.Eventing.Reader;
 
 namespace Testing3
 {
@@ -220,6 +221,61 @@ namespace Testing3
             //test to see that the record was not found
             Assert.IsFalse( Found );
 
+        }
+        [TestMethod]
+
+        public void ReportByGameIDMethodOK()
+        {
+            //create an instance of the class containing unfiltered results
+            clsStockCollection AllStocks = new clsStockCollection();
+            //create an instance of the filtered data   
+            clsStockCollection FilteredStocks = new clsStockCollection();
+            //apply a blank string (should return all records);
+            FilteredStocks.ReportByGameID("");
+            //test to see that the two values are the same
+            Assert.AreEqual(AllStocks.Count, FilteredStocks.Count );
+        }
+        [TestMethod]
+
+        public void ReportByGameIDNoneFound()
+        {
+            //create an instance of the class we want to create
+            clsStockCollection FilteredStocks = new clsStockCollection();
+            //apply a post code that doesnt exist
+            FilteredStocks.ReportByGameID("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
+            //test to see that there are no records 
+            Assert.AreEqual(0, FilteredStocks.Count);
+        }
+        [TestMethod]
+
+        public void ReportByGameIDTestDataFound()
+        {
+            //create an instance of the class we want to create
+            clsStockCollection FilteredStocks = new clsStockCollection();
+            //variable to store the outcome
+            Boolean OK = true;
+            //apply a post code that doesnt exist
+            FilteredStocks.ReportByGameID("Port Vale VS Farrow");
+            //check that the correct number of records are found
+            if (FilteredStocks.Count == 2) 
+            {
+                //check to see that the first record is 1038
+                if (FilteredStocks.StockList[0].StockID != 1038)
+                {
+                    OK = false;
+                }
+                //check to see that the first record is 1039
+                if (FilteredStocks.StockList[1].StockID != 1039)
+                {
+                    OK = false;
+                }
+            }
+            else
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+            
         }
     }
 }
