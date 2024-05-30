@@ -181,7 +181,7 @@ namespace ClassLibrary
             //add the parameter for the address id to search for
             DB.AddParameter("@CustomerNo", CustomerNo);
             //execute the stored procedure
-            DB.Execute("sproc_tblCustomer_FilterByCustomerNo");
+            DB.Execute("sproc_TblCustomer_FilterByCustomerNo");
             //if one record is found (there should be either one or zero)
             if (DB.Count == 1)
             {

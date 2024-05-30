@@ -101,5 +101,39 @@ namespace Testing1
             Assert.AreEqual(AllCustomers.Count, TestList.Count);
         }
 
+        [TestMethod]
+        public void AddMethodOK()
+        {
+            //create an instance of the class we want to create
+            clsCustomerCollection AllCustomers = new clsCustomerCollection();
+            //create the item of test data
+            clsCustomer TestItem = new clsCustomer();
+            //variable to store the primary key
+            Int32 PrimaryKey = 0;
+            //set its properties
+            TestItem.AccountActivity = true;
+            TestItem.CustomerNo = 7;
+            TestItem.CustomerName = "Phil Taylor";
+            TestItem.CustomerEmailAddress = "ThePower@outlook.co.uk";
+            TestItem.CustomerAddress = "69 Harvard Close FG5 67H";
+            TestItem.CustomerJoinDate = Convert.ToDateTime("28/05/2024");
+            TestItem.CustomerExpiryDate = Convert.ToDateTime("01/07/2027");
+            TestItem.CustomerCVC = 236;
+            TestItem.CustomerCardNo = 7592345196471908;
+            //set thiscustomer to the test data
+            AllCustomers.ThisCustomer = TestItem;
+            //add the record
+            PrimaryKey = AllCustomers.Add();
+            //set the primary key of the test data
+            TestItem.CustomerNo = PrimaryKey;
+            //find the record
+            AllCustomers.ThisCustomer.Find(PrimaryKey);
+            //test to see that the two values are the same
+            Assert.AreEqual(AllCustomers.ThisCustomer, TestItem);
+
+
+        }
+
     }
+
 }
