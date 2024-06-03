@@ -109,10 +109,10 @@ namespace ClassLibrary
         }
 
         //private data member for the OrderNo property
-        private Int32 mOrderNo;
+        private String mOrderNo;
         //price public property
 
-        public int OrderNo
+        public String OrderNo
         {
             get
             {
@@ -153,7 +153,7 @@ namespace ClassLibrary
                 mStock = Convert.ToBoolean(DB.DataTable.Rows[0]["Stock"]);
                 mOrderSummary = Convert.ToString(DB.DataTable.Rows[0]["OrderSummary"]);
                 mPrice = Convert.ToInt32(DB.DataTable.Rows[0]["Price"]);
-                mOrderNo = Convert.ToInt32(DB.DataTable.Rows[0]["OrderNo"]);
+                mOrderNo = Convert.ToString(DB.DataTable.Rows[0]["OrderNo"]);
                 //return that everyhting worked OK
                 return true;
 
@@ -166,9 +166,19 @@ namespace ClassLibrary
             }
         }
 
-        public string Valid(string orderColour, string orderSummary, object dateAddded, string price, string orderNo)
+        public string Valid(string OrderColour, string OrderSummary, object DateAdded, string Price, string OrderNo)
         {
-            return "";
+            //create a string variable to store the erro
+            String Error = "";
+            //if the OrderNo is blank
+            if (OrderNo.Length == 0)
+            {
+                //record the error 
+                Error = Error + "The Order number may not be blank : ";
+
+            }
+            //return any error messages
+            return Error;
         }
     }
 }

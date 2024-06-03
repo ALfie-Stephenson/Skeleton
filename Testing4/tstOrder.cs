@@ -59,7 +59,7 @@ namespace Testing4
             //create an instance of the class we want to create
             clsOrder AnOrder = new clsOrder();
             //create some test data to assign to the property
-            Int32 TestData = 1;
+            String TestData = "2";
             //assign the data to the property
             AnOrder.OrderNo = TestData;
             //test to see that the two values are the same
@@ -288,7 +288,7 @@ namespace Testing4
             //invoke the method
             Found = AnOrder.Find(OrderId);
             //check the street property
-            if (AnOrder.OrderNo != 5)
+            if (AnOrder.OrderNo != "5")
             {
                 OK = false;
             }
@@ -305,11 +305,26 @@ namespace Testing4
             //string variable to store any error message
             string Error = "";
             //invoke the method 
-            Error = AnOrder.Valid(OrderColour, OrderSummary, DateAdded, Price, OrderNo);
+            Error = AnOrder.Valid(OrderNo, OrderSummary, OrderColour, Price, DateAdded);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
 
+        [TestMethod]
+
+        public void OrderNoMinLessOne()
+        {
+            //create an instance of the class we want to create
+            clsOrder AnOrder = new clsOrder();
+            //string c=variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string OrderNo = ""; //this should trigger an error
+            //invoke the method
+            Error = AnOrder.Valid(OrderNo, OrderSummary, OrderColour, Price, DateAdded);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
     }
 }
 
