@@ -20,7 +20,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //capture the order summary
         AnOrder.OrderSummary = txtOrderSummary.Text;
         //capture the order no
-        AnOrder.OrderNo = Convert.ToInt32(txtOrderNo.Text);
+        AnOrder.OrderNo = txtOrderNo.Text;
         //capture the Date Added
         AnOrder.DateAdded = Convert.ToDateTime(DateTime.Now);
         //capture Stock check Box
