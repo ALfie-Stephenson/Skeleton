@@ -184,21 +184,8 @@ namespace ClassLibrary
                 //record the error 
                 Error = Error + "The house no must be less than 6 characters : ";
             }
-            //copy the dateAdded value to the DateTemp variable
-            DateTemp = Convert.ToDateTime(dateAdded);
-            //check to see if the date is less than today's date
-            if (DateTemp < DateTime.Now.Date)
-            {
-                Error = Error + "The date cannot be in the past : ";
-            }
-            //check to see if the date is greater than todays date
-            if (DateTemp > DateTime.Now.Date)
-            {
-                //record the error
-                Error = Error + "The date cannot be in the future : ";
-            }
             //create an instance of DateTime to compare with DateTemp
-            //in the if statements
+            //in the if statement
             DateTime DateComp = DateTime.Now.Date;
 
             try
@@ -206,15 +193,16 @@ namespace ClassLibrary
                 //copy the dateAdded value to the DateTemp variable
                 DateTemp = Convert.ToDateTime(dateAdded);
 
-                if (DateTemp < DateComp) //compare dateAdded with date
+                if (DateTemp < DateComp) //compare dateAdded with Date
                 {
                     //record the error
                     Error = Error + "The date cannot be in the past : ";
                 }
-                //check to see if the date is greater than todays date
+                //check to see if the date is greater than today's date
                 if (DateTemp > DateComp)
                 {
                     //record the error
+
                     Error = Error + "The date cannot be in the future : ";
                 }
             }
@@ -224,6 +212,49 @@ namespace ClassLibrary
                 Error = Error + "The date was not a valid date : ";
             }
 
+            //is the Order summary blank
+            if (orderSummary.Length == 0)
+            {
+                //record the error
+                Error = Error + "The Order Summary should not be left blank : ";
+                
+            }
+
+            //if the Order summary is too long
+            if (orderSummary.Length > 50)
+            {
+                //record the error
+                Error = Error + "The OrderSummary must be less than 50 characters : ";
+            }
+
+            //if the order colour is blank
+            if (orderColour.Length == 0)
+            {
+                //record the error
+                Error = Error + "The Order Colour may not be blank : ";
+            }
+
+            //if the the Order colour is too long
+            if (orderColour.Length > 50)
+            {
+                //record the error
+                Error = Error + "The Order Colour should be less than 50 characters : ";
+            }
+
+            // if Price is blank
+            if (price.Length == 0)
+            {
+                //record the error
+                Error = Error + "The price may not be blank : ";
+            }
+
+            //if the Price is too long
+            if(price.Length > 50)
+            {
+                //record the error
+                Error = Error + "The price must be less than 50 characters : ";
+            }
+           
             //return any error messages
             return Error;
         }
