@@ -211,6 +211,61 @@ namespace Testing1
             Assert.IsFalse(Found);
         }
 
+        [TestMethod]
+        public void ReportByCustomerAddressMethodOK()
+        {
+            //create an instance of the class containing unfiltered results
+            clsCustomerCollection AllCustomers = new clsCustomerCollection();
+            //create an instance of the filtered data
+            clsCustomerCollection FilteredCustomers = new clsCustomerCollection();
+            //apply a blank string (should return all records);
+            FilteredCustomers.ReportByCustomerAddress("");
+            //test to see that the two values are the same
+            Assert.AreEqual(AllCustomers.Count, FilteredCustomers.Count);
+
+        }
+
+        [TestMethod]
+        public void ReportByCustomerAddressNoneFound() 
+        {
+            //create an instance of the class we want to create
+            clsCustomerCollection FilteredCustomers = new clsCustomerCollection();
+            //apply a post code that doesnt exist
+            FilteredCustomers.ReportByCustomerAddress("xxx xxx");
+            //test to see that there are no records
+            Assert.AreEqual(0, FilteredCustomers.Count);
+        }
+
+        [TestMethod]
+        public void ReportByCustomerAddressTestDataFound()
+        {
+            //create an instance of the filtered data
+            clsCustomerCollection FilteredCustomers = new clsCustomerCollection();
+            //variable to store the outcome
+            Boolean OK = true;
+            //apply an address that doesnt exist
+            FilteredCustomers.ReportByCustomerAddress("12 Cross Cross 6CR O22");
+            //check that the correct number of records are found
+            if (FilteredCustomers.Count == 2)
+            {
+                //check to see that the first record is 2050
+                if (FilteredCustomers.CustomerList[0].CustomerNo !=2050)
+                {
+                    OK = false;
+                }
+                //check to see the second record is 2051
+                if (FilteredCustomers.CustomerList[1].CustomerNo != 2051)
+                {
+                    OK = false;
+                }
+            }
+            else
+            {
+                OK = false;
+            }
+            //test to see that there are no records
+            Assert.IsTrue(OK);
+        }
     }
 
 }
