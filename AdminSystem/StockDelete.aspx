@@ -6,9 +6,9 @@
 <head runat="server">
     <title></title>
 </head>
-<body>
+<body style="height: 310px">
     <form id="form1" runat="server" dir="rtl">
-        <div>
+        <div style="height: 234px">
             <br />
             <br />
             <br />
@@ -20,7 +20,7 @@
             <br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <asp:Label ID="Label1" runat="server" Text="Are you sure you want to delete this record ?"></asp:Label>
-&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;
             <br />
             <br />
             <br />

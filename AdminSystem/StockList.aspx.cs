@@ -23,6 +23,12 @@ public partial class _1_List : System.Web.UI.Page
                 DisplayStocks();
             }
         }
+        //create a new instance of clsstock user
+        clsStockUser AnUser = new clsStockUser();
+        //get data from the session object
+        AnUser = (clsStockUser)Session["AnUser"];
+        //display the user name 
+        Response.Write("Logged in as: " + AnUser.UserName);
 
     }
 
@@ -101,7 +107,7 @@ public partial class _1_List : System.Web.UI.Page
         //set the name of the primary key
         lstStockList.DataValueField = "StockID";
         //set the name of the feild to display
-        lstStockList.DataTextField = "PostCode";
+        lstStockList.DataTextField = "GameID";
         //bind the data tpo the list
         lstStockList.DataBind();
     }
@@ -119,8 +125,14 @@ public partial class _1_List : System.Web.UI.Page
         //set the name of the primary key
         lstStockList.DataValueField = "StockID";
         //set the name of the feild to display
-        lstStockList.DataTextField = "PostCode";
+        lstStockList.DataTextField = "GameID";
         //bind the data tpo the list
         lstStockList.DataBind();
+    }
+
+    protected void btnMainMenu_Click(object sender, EventArgs e)
+    {
+        //redirect to the main menu
+        Response.Redirect("TeamMainMenu.aspx");
     }
 }

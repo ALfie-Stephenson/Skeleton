@@ -123,4 +123,16 @@ public partial class _1_DataEntry : System.Web.UI.Page
         txtTimeTicketsGoOnSale.Text = StockBook.ThisStock.TimeTicketsGoOnSale.ToString();
         chkInStock.Checked = StockBook.ThisStock.InStock;
     }
+
+    protected void btnMainMenu_Click(object sender, EventArgs e)
+    {
+        //redirect to the main menu
+        Response.Redirect("TeamMainMenu.aspx");
+    }
+
+    protected void btnCancel_Click(object sender, EventArgs e)
+    {
+        //redirect to the main menu
+        Response.Redirect("StockList.aspx");
+    }
 }
