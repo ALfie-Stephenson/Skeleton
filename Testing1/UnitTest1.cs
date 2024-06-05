@@ -208,7 +208,7 @@ namespace Testing1
             //now find the record
             Boolean Found = AllCustomers.ThisCustomer.Find(PrimaryKey);
             //test to see that the record was not found
-            Assert.IsTrue(Found);
+            Assert.IsFalse(Found);
         }
 
     }
