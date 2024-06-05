@@ -134,6 +134,48 @@ namespace Testing1
 
         }
 
+        public void UpdateMethodOK()
+        {
+            //create an instance of the class we want to create
+            clsCustomerCollection AllCustomers = new clsCustomerCollection();
+            //create the item of test data
+            clsCustomer TestItem = new clsCustomer();
+            //variable to store the primary key
+            Int32 PrimaryKey = 0;
+            //set its properties
+            TestItem.AccountActivity = true;
+            TestItem.CustomerName = "Phil Taylor";
+            TestItem.CustomerEmailAddress = "ThePower@outlook.co.uk";
+            TestItem.CustomerAddress = "69 Harvard Close FG5 67H";
+            TestItem.CustomerJoinDate = Convert.ToDateTime("28/05/2024");
+            TestItem.CustomerExpiryDate = Convert.ToDateTime("01/07/2027");
+            TestItem.CustomerCVC = 236;
+            TestItem.CustomerCardNo = 7592345196471908;
+            //set ThisCustomer to the test data
+            AllCustomers.ThisCustomer = TestItem;
+            //add the record
+            PrimaryKey = AllCustomers.Add();
+            //set the primary key of the data
+            TestItem.CustomerNo = PrimaryKey;
+            //modidy the test record
+            TestItem.AccountActivity = false;
+            TestItem.CustomerName = "Luke Littler";
+            TestItem.CustomerEmailAddress = "TheNuke@gmail.com";
+            TestItem.CustomerAddress = "49 Harvard Close FG5 67H";
+            TestItem.CustomerJoinDate = Convert.ToDateTime("29/05/2024");
+            TestItem.CustomerExpiryDate = Convert.ToDateTime("01/05/2027");
+            TestItem.CustomerCVC = 237;
+            TestItem.CustomerCardNo = 7592995196471908;
+            //set the record based on the new test data
+            AllCustomers.ThisCustomer = TestItem;
+            //update the record
+            AllCustomers.Update();
+            //find the record
+            AllCustomers.ThisCustomer.Find(PrimaryKey);
+            //test to see if ThisCustomer matches the test data
+            Assert.AreEqual(AllCustomers.ThisCustomer, TestItem);
+        }
+
     }
 
 }
