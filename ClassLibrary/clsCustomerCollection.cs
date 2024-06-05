@@ -105,6 +105,11 @@ namespace ClassLibrary
             //execute the query returning the primary key value
             return DB.Execute("sproc_TblCustomer_Insert");
         }
+
+        public void Update()
+        {
+            throw new NotImplementedException();
+        }
     }
 
 }

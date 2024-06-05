@@ -8,8 +8,21 @@ using ClassLibrary;
 
 public partial class _1_DataEntry : System.Web.UI.Page
 {
+    //variable to store the primary key with page level scope
+    Int32 CustomerNo;
     protected void Page_Load(object sender, EventArgs e)
     {
+        //get the number of customers to be processed
+        CustomerNo = Convert.ToInt32(Session["CustomerNo"]);
+        if (IsPostBack == false)
+        {
+            //if this is not a new record
+            if (CustomerNo != -1)
+            {
+                //display the current data for the record
+                DisplayCustomer();
+            }
+        }
 
     }
 
@@ -42,6 +55,8 @@ public partial class _1_DataEntry : System.Web.UI.Page
         Error = Customer.Valid(CustomerName, CustomerAddress, CustomerEmailAddress, CustomerExpiryDate, CustomerJoinDate);
         if (Error == "")
         {
+            //capture the customer no
+            Customer.CustomerNo = CustomerNo;
             //capture the customer name
             Customer.CustomerName = CustomerName;
             //capture the customer address
@@ -58,17 +73,35 @@ public partial class _1_DataEntry : System.Web.UI.Page
             Customer.CustomerCardNo = Convert.ToInt64(txtCustomerCardNo.Text);
             //capture the account activity
             Customer.AccountActivity = chkActive.Checked;
-            //store the name in the session object
-            Session["Customer"] = Customer;
-            //navigate to the view page
-            Response.Redirect("CustomerViewer.aspx");
+            //create a new instance of the address collection
+            clsCustomerCollection CustomerList = new clsCustomerCollection();
+
+            //if this is a new record i.e. CustomerNo = -1 then add the data
+            if (CustomerNo == -1)
+            {
+                //set the ThisCustomer property
+                CustomerList.ThisCustomer = Customer;
+                //add the new record
+                CustomerList.Add();
+            }
+            //otherwise it must be an update
+            else
+            {
+                //find the record to update
+                CustomerList.ThisCustomer.Find(CustomerNo);
+                //set the ThisCustomer property
+                CustomerList.ThisCustomer = Customer;
+                //update the record
+                CustomerList.Update();
+            }
+            //redirect back to list page
+            Response.Redirect("AddressBookList.aspx");
         }
-        else
+        else 
         {
             //display the error message
             lblError.Text = Error;
         }
-
     }
 
 
@@ -99,5 +132,24 @@ public partial class _1_DataEntry : System.Web.UI.Page
             txtCustomerName.Text = Customer.CustomerName;
             txtCustomerEmailAddress.Text = Customer.CustomerEmailAddress;
         }
+    }
+
+    void DisplayCustomer()
+    {
+        //create an instance of the customer book
+        clsCustomerCollection CustomerBook = new clsCustomerCollection();
+        //find the record to update
+        CustomerBook.ThisCustomer.Find(CustomerNo);
+        //display the data for the record
+        txtCustomerNo.Text = CustomerBook.ThisCustomer.CustomerNo.ToString();
+        txtCustomerCardNo.Text = CustomerBook.ThisCustomer.CustomerCardNo.ToString();
+        txtCustomerCVC.Text = CustomerBook.ThisCustomer.CustomerCVC.ToString();
+        chkActive.Checked = CustomerBook.ThisCustomer.AccountActivity;
+        txtCustomerJoinDate.Text = CustomerBook.ThisCustomer.CustomerJoinDate.ToString();
+        txtCustomerExpiryDate.Text = CustomerBook.ThisCustomer.CustomerExpiryDate.ToString();
+        txtCustomerAddress.Text = CustomerBook.ThisCustomer.CustomerAddress.ToString();
+        txtCustomerName.Text = CustomerBook.ThisCustomer.CustomerName.ToString();
+        txtCustomerEmailAddress.Text = CustomerBook.ThisCustomer.CustomerEmailAddress.ToString();
+
     }
 }
