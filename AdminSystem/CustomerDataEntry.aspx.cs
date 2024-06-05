@@ -12,17 +12,6 @@ public partial class _1_DataEntry : System.Web.UI.Page
     Int32 CustomerNo;
     protected void Page_Load(object sender, EventArgs e)
     {
-        //get the number of customers to be processed
-        CustomerNo = Convert.ToInt32(Session["CustomerNo"]);
-        if (IsPostBack == false)
-        {
-            //if this is not a new record
-            if (CustomerNo != -1)
-            {
-                //display the current data for the record
-                DisplayCustomer();
-            }
-        }
 
     }
 
@@ -95,7 +84,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
                 CustomerList.Update();
             }
             //redirect back to list page
-            Response.Redirect("AddressBookList.aspx");
+            Response.Redirect("CustomerList.aspx");
         }
         else 
         {
