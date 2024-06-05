@@ -108,7 +108,31 @@ namespace ClassLibrary
 
         public void Update()
         {
-            throw new NotImplementedException();
+            //update an existing record based on the values of ThisCustomer
+            //connect to the database
+            clsDataConnection DB = new clsDataConnection();
+            //set the parameters for the stored procedure
+            DB.AddParameter("@CustomerName", mThisCustomer.CustomerName);
+            DB.AddParameter("@CustomerCardNo", mThisCustomer.CustomerCardNo);
+            DB.AddParameter("@CustomerCVC", mThisCustomer.CustomerCVC);
+            DB.AddParameter("@CustomerExpiryDate", mThisCustomer.CustomerExpiryDate);
+            DB.AddParameter("@CustomerJoinDate", mThisCustomer.CustomerJoinDate);
+            DB.AddParameter("@CustomerAddress", mThisCustomer.CustomerAddress);
+            DB.AddParameter("@CustomerEmailAddress", mThisCustomer.CustomerEmailAddress);
+            DB.AddParameter("@AccountActivity", mThisCustomer.AccountActivity);
+            //execute the stored procedure
+            DB.Execute("sproc_TblCustomer_Update");
+        }
+
+        public void Delete()
+        {
+            //deletes the record pointed to by ThisCustomer
+            //connect to the database
+            clsDataConnection DB = new clsDataConnection();
+            //set the paarameters for the stored procedure
+            DB.AddParameter("@CustomerNo", mThisCustomer.CustomerNo);
+            //execute the stored procedure
+            DB.Execute("sproc_TblCustomer_Delete");
         }
     }
 

@@ -10,6 +10,7 @@
     <form id="form1" runat="server">
         <div>
         </div>
+        <asp:Button ID="btnDelete" runat="server" OnClick="btnDelete_Click" style="z-index: 1; left: 250px; top: 649px; position: absolute" Text="Delete" />
         <asp:ListBox ID="lstCustomerList" runat="server" Height="591px" Width="629px"></asp:ListBox>
         <p>
             <asp:Button ID="btnAdd" runat="server" OnClick="Button1_Click" Text="Add" />
