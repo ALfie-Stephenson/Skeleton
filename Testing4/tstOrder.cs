@@ -98,7 +98,7 @@ namespace Testing4
             //create an instance of the class we want to create
             clsOrder AnOrder = new clsOrder();
             //create some test data to assign to the property
-            Int32 TestData = 55;
+            String TestData = "450";
             //assign the data to the property
             AnOrder.Price = TestData;
             //test to see that the two values are the same
@@ -265,7 +265,7 @@ namespace Testing4
             //invoke the method 
             Found = AnOrder.Find(OrderId);
             //check the price property
-            if (AnOrder.Price != 450)
+            if (AnOrder.Price != "450")
             {
                 OK = false;
             }

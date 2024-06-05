@@ -92,9 +92,9 @@ namespace ClassLibrary
         }
 
         //private data member for the price property
-        private Int32 mPrice;
+        private String mPrice;
         //price public property
-        public int Price
+        public String Price
         {
             get
             {
@@ -152,7 +152,7 @@ namespace ClassLibrary
                 mOrderColour = Convert.ToString(DB.DataTable.Rows[0]["OrderColour"]);
                 mStock = Convert.ToBoolean(DB.DataTable.Rows[0]["Stock"]);
                 mOrderSummary = Convert.ToString(DB.DataTable.Rows[0]["OrderSummary"]);
-                mPrice = Convert.ToInt32(DB.DataTable.Rows[0]["Price"]);
+                mPrice = Convert.ToString(DB.DataTable.Rows[0]["Price"]);
                 mOrderNo = Convert.ToString(DB.DataTable.Rows[0]["OrderNo"]);
                 //return that everyhting worked OK
                 return true;

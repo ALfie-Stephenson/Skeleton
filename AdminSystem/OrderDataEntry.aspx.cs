@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -18,21 +19,43 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //create a new instance of clsOrder
         clsOrder AnOrder = new clsOrder();
         //capture the order summary
-        AnOrder.OrderSummary = txtOrderSummary.Text;
+        string OrderSummary = txtOrderSummary.Text;
         //capture the order no
-        AnOrder.OrderNo = txtOrderNo.Text;
+        string OrderNo = txtOrderNo.Text;
         //capture the Date Added
-        AnOrder.DateAdded = Convert.ToDateTime(DateTime.Now);
+        string DateAdded = txtDateAdded.Text;
         //capture Stock check Box
-        AnOrder.Stock = chkInStock.Checked;
+        string Stock = chkInStock.Text;
         //Capture Order colour (Ticket colour)
-        AnOrder.OrderColour = txtOrderColour.Text;
+        string OrderColour = txtOrderColour.Text;
         //Capture the Price
-        AnOrder.Price = Convert.ToInt32(txtPrice.Text);
-        //store the Order in the session object
-        Session["AnOrder"] =AnOrder;
-        //navigate to the view page
-        Response.Redirect("OrderViewer.aspx");
+        string Price = txtPrice.Text;
+        //variable to store any error messages
+        string Error = "";
+        //validate the data
+        Error = AnOrder.Valid(OrderNo, OrderSummary, OrderColour, Price, DateAdded);
+        if (Error == "")
+        {
+            //capture the order Summary
+            AnOrder.OrderSummary = OrderSummary;
+            //capture the order no
+            AnOrder.OrderNo = OrderNo;
+            //capture the Date
+            AnOrder.DateAdded = Convert.ToDateTime(DateAdded);
+            //capture the order colour 
+            AnOrder.OrderColour = OrderColour;
+            //capture the price
+            AnOrder.Price = Price;
+            //store the order in the session object
+            Session["AnOrder"] = AnOrder;
+            //navigate to the view page
+            Response.Redirect("OrderViewer.aspx");
+        }
+        else
+        {
+            //display the error message
+            lblError.Text = Error;
+        }
     }
 
 
