@@ -121,4 +121,5 @@ public partial class _1_List : System.Web.UI.Page
         lstOrderList.DataTextField = "OrderNo";
         //bind the data to the list
         lstOrderList.DataBind();
+    }
 }
