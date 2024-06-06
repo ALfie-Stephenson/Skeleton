@@ -46,10 +46,16 @@ public partial class _1_DataEntry : System.Web.UI.Page
             AnOrder.OrderColour = OrderColour;
             //capture the price
             AnOrder.Price = Price;
-            //store the order in the session object
-            Session["AnOrder"] = AnOrder;
-            //navigate to the view page
-            Response.Redirect("OrderViewer.aspx");
+            //capture Stock
+            AnOrder.Stock = chkInStock.Checked;
+            //create a new instance of the order collection 
+            clsOrderCollection1 OrderList = new clsOrderCollection1();
+            //set the Order Property
+            OrderList.ThisOrder = AnOrder;
+            //add the new record
+            OrderList.Add();
+            //redirect back to the list page
+            Response.Redirect("OrderList.aspx");
         }
         else
         {

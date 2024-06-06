@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Common;
 
 namespace ClassLibrary
 {
@@ -7,6 +8,8 @@ namespace ClassLibrary
     {
         //private data member gor the list
         List<clsOrder> mOrderList = new List<clsOrder>();
+        //private data member for thisOrder
+        clsOrder mThisOrder = new clsOrder();
 
         //public property for the address list
         public List<clsOrder> OrderList
@@ -93,7 +96,38 @@ namespace ClassLibrary
             mOrderList.Add(TestItem);
         }
         
-        public clsOrder ThisOrder { get; set; }
+        //public property for ThisOrder
+        public clsOrder ThisOrder
+        {
+            get
+            {
+                //return the private data
+                return mThisOrder;
+            }
+            set
+            {
+                //set the private data
+                mThisOrder = value;
+            }
+        }
+
+        public int Add()
+        {
+            //adds a record to the database based on the values of mThisOrder
+            //connect to the database
+            clsDataConnection DB = new clsDataConnection();
+            //set the parameters for the stored procedure
+            DB.AddParameter("@OrderNo", mThisOrder.OrderNo);
+            DB.AddParameter("@OrderSummary", mThisOrder.OrderSummary);
+            DB.AddParameter("Stock", mThisOrder.Stock);
+            DB.AddParameter("@DateAdded", mThisOrder.DateAdded);
+            DB.AddParameter("@Price", mThisOrder.Price);
+            DB.AddParameter("@OrderColour", mThisOrder.OrderColour);
+
+            //execute the query returning the primary key value
+            return DB.Execute("sproc_tblOrder_Insert");
+
+        }
     }
 
 }
