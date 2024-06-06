@@ -9,8 +9,9 @@
 <body>
     <form id="form1" runat="server">
         <div>
+            <asp:Button ID="btnMainMenu" runat="server" OnClick="btnMainMenu_Click" style="z-index: 1; left: 388px; top: 762px; position: absolute" Text="Return to Main Menu" />
         </div>
-        <asp:Button ID="btnDelete" runat="server" OnClick="btnDelete_Click" style="z-index: 1; left: 250px; top: 649px; position: absolute" Text="Delete" />
+        <asp:Button ID="btnDelete" runat="server" OnClick="btnDelete_Click" style="z-index: 1; left: 259px; top: 646px; position: absolute" Text="Delete" />
         <asp:ListBox ID="lstCustomerList" runat="server" Height="591px" Width="629px"></asp:ListBox>
         <p>
             <asp:Button ID="btnAdd" runat="server" OnClick="Button1_Click" Text="Add" />
@@ -19,7 +20,7 @@
         <p>
             &nbsp;</p>
         <p>
-            <asp:Button ID="btnEdit" runat="server" style="z-index: 1; left: 137px; top: 645px; position: absolute" Text="Edit" OnClick="btnEdit_Click" />
+            <asp:Button ID="btnEdit" runat="server" style="z-index: 1; left: 138px; top: 644px; position: absolute" Text="Edit" OnClick="btnEdit_Click" />
             <asp:Label ID="lblError" runat="server" style="z-index: 1; left: 10px; top: 827px; position: absolute"></asp:Label>
         </p>
         <asp:TextBox ID="txtAddressFilter" runat="server" style="z-index: 1; left: 152px; top: 717px; position: absolute"></asp:TextBox>

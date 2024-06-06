@@ -141,4 +141,10 @@ public partial class _1_DataEntry : System.Web.UI.Page
         txtCustomerEmailAddress.Text = CustomerBook.ThisCustomer.CustomerEmailAddress.ToString();
 
     }
+
+    protected void btnMainMenu_Click(object sender, EventArgs e)
+    {
+        //redirect to the main menu
+        Response.Redirect("TeamMainMenu.aspx");
+    }
 }

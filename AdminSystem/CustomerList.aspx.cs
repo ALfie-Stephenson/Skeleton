@@ -22,7 +22,14 @@ public partial class _1_List : System.Web.UI.Page
                 //display the current data for the record
                 DisplayCustomers();
             }
+
         }
+        //create a new instance of clscustomeruser
+        clsCustomerUser AnUser = new clsCustomerUser();
+        //get data from the session object
+        AnUser = (clsCustomerUser)Session["AnUser"];
+        //display the user name
+        Response.Write("Logged in as: " + AnUser.UserName);
     }
 
     void DisplayCustomers()
@@ -123,5 +130,11 @@ public partial class _1_List : System.Web.UI.Page
             //display an error message
             lblError.Text = "Please select a record from the list to edit";
         }
+    }
+
+    protected void btnMainMenu_Click(object sender, EventArgs e)
+    {
+        //redirect to the main menu
+        Response.Redirect("TeamMainMenu.aspx");
     }
 }

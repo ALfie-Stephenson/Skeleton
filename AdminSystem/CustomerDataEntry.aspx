@@ -31,7 +31,8 @@
         <asp:TextBox ID="txtCustomerExpiryDate" runat="server" style="z-index: 1; left: 162px; top: 237px; position: absolute" height="25px" width="168px"></asp:TextBox>
         </p>
         <p>
-            <asp:Button ID="btnFind" runat="server" OnClick="btnFind_Click" style="z-index: 1; left: 354px; top: 30px; position: absolute" Text="Find" />
+            <asp:Button ID="btnFind" runat="server" OnClick="btnFind_Click" style="z-index: 1; left: 372px; top: 26px; position: absolute" Text="Find" />
+            <asp:Button ID="btnMainMenu" runat="server" OnClick="btnMainMenu_Click" style="z-index: 1; left: 349px; top: 464px; position: absolute" Text="Return to Main Menu" />
         </p>
         <asp:Label ID="lblCustomerEmailAddress" runat="server" height="19px" style="z-index: 1; left: 11px; top: 115px; position: absolute; bottom: 688px; right: 1410px" Text="Email Address" width="145px"></asp:Label>
         <asp:TextBox ID="txtCustomerEmailAddress" runat="server" style="z-index: 1; left: 162px; top: 112px; position: absolute; height: 25px; width: 168px;"></asp:TextBox>
