@@ -170,11 +170,67 @@ namespace ClassLibrary
         }
 
 
-        public string Valid(string staffName, string staffRole, string staffStart, string staffNo)
-
+        public string Valid(string staffName, string staffRole, string staffStart)
         {
-            return "";
+            //create a string variable to store the error
+            String Error = "";
+            //create a temporary variable to store the date values
+            DateTime DateTemp;
+            //if the StaffName is blank
+            if (staffName.Length == 0)
+            {
+                //record the error
+                Error = Error + "The Staff Name field must be populated : ";
+            }
+            //if the StaffName is greater than 50 characters
+            if (staffName.Length > 50)
+            {
+                //record the error
+                Error = Error + "The Staff Name field must be less than 50 characters : ";
+            }
+            //if the StaffRole is blank
+            if (staffRole.Length == 0)
+            {
+                //record the error
+                Error = Error + "The Staff's Role field must be populated : ";
+            }
+            //if the StaffRole is greater than 100 characters
+            if (staffRole.Length > 100)
+            { 
+                //record the error
+                Error = Error + "The Staff Role field must be less than 100 characters : ";
+            }
+            //create an instance of DateTime and compare with DateTemp
+            //in the if statements
+            DateTime DateComp = DateTime.Now.Date;
+            //check if the date is in the future
+            if (DateComp > DateTime.Now.Date)
+            {
+                Error = Error + "Invalid. The date has to be in the past : ";
+            }
+            try
+            {
+                //copy the StaffStart date value to the DateTemp variable
+                DateTemp = Convert.ToDateTime(staffStart);
+
+                if (DateTemp < DateComp) //compare StaffStart with the date
+                {
+                    //record the error
+                    Error = Error + "Invalid. The date has to be in the past : ";
+                }
+            }
+            catch
+            {
+                //record the error
+                Error = Error + "Inputted an invalid date : ";
+            }
+
+            //return any error messages
+            return Error;
+
+            throw new NotImplementedException();
         }
     }
 }
+
         
