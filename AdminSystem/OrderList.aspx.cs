@@ -90,4 +90,35 @@ public partial class _1_List : System.Web.UI.Page
             lblError.Text = "Please select a record from the list to delete";
         }
     }
+
+    protected void btnApplyFilter_Click(object sender, EventArgs e)
+    {
+        //create an instance of the Order object
+        clsOrderCollection1 AnOrder = new clsOrderCollection1();
+        //retrieve the value of post code from the presentation layer 
+        AnOrder.ReportByOrderNo(btnApplyFilter.Text);
+        //set the data source to the list of orders in the collection 
+        lstOrderList.DataSource = AnOrder.OrderList;
+        //set the name of the primary key
+        lstOrderList.DataTextField = "OrderNo";
+        //bind the data to the list
+        lstOrderList.DataBind();
+    }
+
+    protected void btnClearFilter_Click(object sender, EventArgs e)
+    {
+        //create an instance of the address object
+        clsOrderCollection1 AnOrder = new clsOrderCollection1();
+        //set an empty string 
+        AnOrder.ReportByOrderNo("");
+        //clear any existing filter to tidy up the interface
+        btnApplyFilter.Text = "";
+        //set the data source to the list of addresses in the collection
+        lstOrderList.DataSource = AnOrder.OrderList;
+        //set the name of the primary key
+        lstOrderList.DataValueField = "OrderId";
+        //set the name of the field to display
+        lstOrderList.DataTextField = "OrderNo";
+        //bind the data to the list
+        lstOrderList.DataBind();
 }
