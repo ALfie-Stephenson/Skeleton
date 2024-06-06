@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Common;
+using System.Runtime.InteropServices.ComTypes;
 
 namespace ClassLibrary
 {
@@ -119,7 +120,7 @@ namespace ClassLibrary
             //set the parameters for the stored procedure
             DB.AddParameter("@OrderNo", mThisOrder.OrderNo);
             DB.AddParameter("@OrderSummary", mThisOrder.OrderSummary);
-            DB.AddParameter("Stock", mThisOrder.Stock);
+            DB.AddParameter("@Stock", mThisOrder.Stock);
             DB.AddParameter("@DateAdded", mThisOrder.DateAdded);
             DB.AddParameter("@Price", mThisOrder.Price);
             DB.AddParameter("@OrderColour", mThisOrder.OrderColour);
@@ -144,6 +145,17 @@ namespace ClassLibrary
             DB.AddParameter("@OrderColour", mThisOrder.OrderColour);
             //execute the stored procedure
             DB.Execute("sproc_tblOrder_Update");
+        }
+
+        public void Delete()
+        {
+            //deletes the record pointed by thisAddress
+            //connect to the database
+            clsDataConnection DB = new clsDataConnection();
+            //set the parameters for the stored procedure
+            DB.AddParameter("@OrderId", mThisOrder.OrderId);
+            //execute the stored procedure
+            DB.Execute("sproc_tblOrder_Delete");
         }
     }
 
