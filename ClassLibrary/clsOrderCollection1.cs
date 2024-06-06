@@ -43,58 +43,12 @@ namespace ClassLibrary
 
         public clsOrderCollection1()
         {
-            //variable for the index
-            Int32 Index = 0;
-            //variable to store the record count
-            Int32 RecordCount = 0;
-            //object for the data connect 
+            //object for the data connection
             clsDataConnection DB = new clsDataConnection();
             //execute the stored procedure
             DB.Execute("sproc_tblOrder_SelectAll");
-            //get the count of the records
-            RecordCount = DB.Count;
-            //while there are records to process
-            while (Index < RecordCount)
-            {
-                //create a blank address
-                clsOrder AnOrder = new clsOrder();
-                //reaf in the fields for the current record
-                AnOrder.Stock = Convert.ToBoolean(DB.DataTable.Rows[Index]["Stock"]);
-                AnOrder.OrderId = Convert.ToInt32(DB.DataTable.Rows[Index]["OrderId"]);
-                AnOrder.OrderSummary = Convert.ToString(DB.DataTable.Rows[Index]["OrderSummary"]);
-                AnOrder.DateAdded = Convert.ToDateTime(DB.DataTable.Rows[Index]["DateAdded"]);
-                AnOrder.OrderColour = Convert.ToString(DB.DataTable.Rows[Index]["OrderColour"]);
-                AnOrder.Price = Convert.ToString(DB.DataTable.Rows[Index]["Price"]);
-                AnOrder.OrderNo = Convert.ToString(DB.DataTable.Rows[Index]["OrderNo"]);
-                //add the ecord to the private data member
-                mOrderList.Add( AnOrder );
-                //point at the next record
-                Index++;
-            }
-            //create the items of test data
-            clsOrder TestItem = new clsOrder();
-            //set its properties
-            TestItem.Stock = true;
-            TestItem.OrderId = 1;
-            TestItem.OrderSummary = "Standard E ticket Row A 1-3";
-            TestItem.DateAdded = DateTime.Now;
-            TestItem.OrderNo = "5";
-            TestItem.Price = "450";
-            TestItem.OrderColour = "Red";
-            //add the test item to the item list
-            mOrderList.Add(TestItem);
-            //re intialise the object for some new data
-            TestItem = new clsOrder();
-            //set its properties
-            TestItem.Stock = true;
-            TestItem.OrderId = 1;
-            TestItem.OrderSummary = "Standard E ticket Row A 1-3";
-            TestItem.DateAdded = DateTime.Now;
-            TestItem.OrderNo = "5";
-            TestItem.Price = "450";
-            TestItem.OrderColour = "Red";
-            //add the item to the test list
-            mOrderList.Add(TestItem);
+            //populate the array list with the data table
+            PopulateArray(DB);
         }
         
         //public property for ThisOrder
@@ -156,6 +110,50 @@ namespace ClassLibrary
             DB.AddParameter("@OrderId", mThisOrder.OrderId);
             //execute the stored procedure
             DB.Execute("sproc_tblOrder_Delete");
+        }
+
+        public void ReportByOrderNo(string OrderNo)
+        {
+            //filters the records based on a full or partial post code
+            //connect to the database
+            clsDataConnection DB = new clsDataConnection();
+            //send the OrderNo parameter to the database
+            DB.AddParameter("@OrderNo", OrderNo);
+            //execute the stored procedure
+            DB.Execute("sproc_tblOrder_FilterByOrderNo");
+            //populate the array list with the data table
+            PopulateArray(DB);
+        }
+
+        void PopulateArray(clsDataConnection DB)
+        {
+            //populates the array list based on the data table in the parameter DB
+            //variable for the index
+            Int32 Index = 0;
+            //variable to store the record count
+            Int32 RecordCount;
+            //get the count of records
+            RecordCount = DB.Count;
+            //clear the private array list
+            mOrderList = new List<clsOrder>();
+            //while there are records to process
+            while (Index < RecordCount)
+            {
+                //create a blank address object
+                clsOrder AnOrder = new clsOrder();
+                //read in the fields from the current record
+                AnOrder.Stock = Convert.ToBoolean(DB.DataTable.Rows[Index]["Stock"]);
+                AnOrder.OrderId = Convert.ToInt32(DB.DataTable.Rows[Index]["OrderId"]);
+                AnOrder.OrderNo = Convert.ToString(DB.DataTable.Rows[Index]["OrderNO"]);
+                AnOrder.OrderSummary = Convert.ToString(DB.DataTable.Rows[Index]["OrderSummary"]);
+                AnOrder.DateAdded = Convert.ToDateTime(DB.DataTable.Rows[Index]["DateAdded"]);
+                AnOrder.Price = Convert.ToString(DB.DataTable.Rows[Index]["Price"]);
+                AnOrder.OrderColour = Convert.ToString(DB.DataTable.Rows[Index]["OrderColour"]);
+                //add the record to the private data member
+                mOrderList.Add(AnOrder);
+                //point at the next record
+                Index++;
+            }
         }
     }
 
