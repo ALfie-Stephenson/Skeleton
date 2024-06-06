@@ -36,12 +36,12 @@ public partial class _1_DataEntry : System.Web.UI.Page
         Order.ThisOrder.Find(OrderId);
         //display the data for the record
         txtOrderId.Text = Order.ThisOrder.OrderId.ToString();
-        txtOrderNo.Text = Order.ThisOrder.OrderNo.ToString();
-        txtOrderSummary.Text = Order.ThisOrder.OrderSummary.ToString();
-        txtDateAdded.Text = Order.ThisOrder.DateAdded.ToString();
-        txtPrice.Text = Order.ThisOrder.Price.ToString();
+        lblOrderNo.Text = Order.ThisOrder.OrderNo.ToString();
+        lblOrderSummary.Text = Order.ThisOrder.OrderSummary.ToString();
+        lblDateAdded.Text = Order.ThisOrder.DateAdded.ToString();
+        lblPrice.Text = Order.ThisOrder.Price.ToString();
         chkInStock.Text = Order.ThisOrder.Stock.ToString();
-        txtOrderColour.Text = Order.ThisOrder.Stock.ToString();
+        lblOrderColour.Text = Order.ThisOrder.Stock.ToString();
     }
 
     protected void btnOK_Click(object sender, EventArgs e)
@@ -49,17 +49,17 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //create a new instance of clsOrder
         clsOrder AnOrder = new clsOrder();
         //capture the order summary
-        string OrderSummary = txtOrderSummary.Text;
+        string OrderSummary = lblOrderSummary.Text;
         //capture the order no
-        string OrderNo = txtOrderNo.Text;
+        string OrderNo = lblOrderNo.Text;
         //capture the Date Added
-        string DateAdded = txtDateAdded.Text;
+        string DateAdded = lblDateAdded.Text;
         //capture Stock check Box
         string Stock = chkInStock.Text;
         //Capture Order colour (Ticket colour)
-        string OrderColour = txtOrderColour.Text;
+        string OrderColour = lblOrderColour.Text;
         //Capture the Price
-        string Price = txtPrice.Text;
+        string Price = lblPrice.Text;
         //variable to store any error messages
         string Error = "";
         //validate the data
@@ -129,12 +129,18 @@ public partial class _1_DataEntry : System.Web.UI.Page
         if (Found == true)
         {
             //display the values of the properties in the form 
-            txtOrderColour.Text = AnOrder.OrderColour;
-            txtOrderNo.Text = AnOrder.OrderNo.ToString();
-            txtOrderSummary.Text = AnOrder.OrderSummary;
-            txtPrice.Text = AnOrder.Price.ToString();
-            txtDateAdded.Text = AnOrder.DateAdded.ToString();
+            lblOrderColour.Text = AnOrder.OrderColour;
+            lblOrderNo.Text = AnOrder.OrderNo.ToString();
+            lblOrderSummary.Text = AnOrder.OrderSummary;
+            lblPrice.Text = AnOrder.Price.ToString();
+            lblDateAdded.Text = AnOrder.DateAdded.ToString();
             chkInStock.Text = AnOrder.Stock.ToString(); 
         }
+    }
+
+    protected void btnReturnToMainMenu_Click(object sender, EventArgs e)
+    {
+        //redirect to main menu
+        Response.Redirect("TeamMainMenu.aspx");
     }
 }
