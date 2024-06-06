@@ -32,10 +32,10 @@
         <asp:CheckBox ID="chkInStock" runat="server" style="z-index: 1; left: 184px; top: 348px; position: absolute" Text="Yes" />
         <asp:Label ID="lblError" runat="server" style="z-index: 1; left: 17px; top: 390px; position: absolute"></asp:Label>
         <p>
-            <asp:Button ID="btnOK" runat="server" OnClick="btnOK_Click" style="z-index: 1; left: 59px; top: 426px; position: absolute; right: 639px; " Text="OK" />
+            <asp:Button ID="btnOK" runat="server" OnClick="btnOK_Click" style="z-index: 1; left: 55px; top: 432px; position: absolute; " Text="OK" />
         </p>
         <p>
-        <asp:Button ID="btnCancel" runat="server" style="z-index: 1; left: 193px; top: 424px; position: absolute" Text="Cancel" OnClick="btnCancel_Click" />
+        <asp:Button ID="btnCancel" runat="server" style="z-index: 1; left: 168px; top: 430px; position: absolute" Text="Cancel" OnClick="btnCancel_Click" />
         </p>
         <p>
             &nbsp;</p>
