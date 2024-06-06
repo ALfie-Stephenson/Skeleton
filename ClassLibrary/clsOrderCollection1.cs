@@ -128,6 +128,23 @@ namespace ClassLibrary
             return DB.Execute("sproc_tblOrder_Insert");
 
         }
+
+        public void Update()
+        {
+            //update an existing record based on the values of thisAddress
+            //connect to the database
+            clsDataConnection DB = new clsDataConnection();
+            //set the parameters for the new stored procedure
+            DB.AddParameter("@OrderId", mThisOrder.OrderId);
+            DB.AddParameter("@OrderNo", mThisOrder.OrderNo);
+            DB.AddParameter("@OrderSummary", mThisOrder.OrderSummary);
+            DB.AddParameter("@Stock", mThisOrder.Stock);
+            DB.AddParameter("@DateAdded", mThisOrder.DateAdded);
+            DB.AddParameter("@Price", mThisOrder.Price);
+            DB.AddParameter("@OrderColour", mThisOrder.OrderColour);
+            //execute the stored procedure
+            DB.Execute("sproc_tblOrder_Update");
+        }
     }
 
 }
