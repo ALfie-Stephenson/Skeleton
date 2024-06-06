@@ -40,6 +40,7 @@ public partial class _Default : System.Web.UI.Page
             //record the error
             lblError.Text = "Enter a username";
         }
+
         //if found
         else if (Found == true)
         {
