@@ -15,7 +15,8 @@
         <p>
             &nbsp;</p>
         <p>
-            &nbsp;</p>
+            <asp:Button ID="btnReturnToMainMenu" runat="server" OnClick="btnReturnToMainMenu_Click" style="z-index: 1; left: 523px; top: 560px; position: absolute; width: 257px" Text="Return To Main Menu" />
+        </p>
         <asp:Label ID="lblError" runat="server" style="z-index: 1; left: 28px; top: 617px; position: absolute; margin-top: 0px; margin-bottom: 19px"></asp:Label>
         <p>
             <asp:Button ID="btnDelete" runat="server" OnClick="btnDelete_Click" style="z-index: 1; left: 244px; top: 422px; position: absolute; margin-bottom: 0px; height: 31px; width: 102px;" Text="Delete" />

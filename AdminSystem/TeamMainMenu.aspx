@@ -21,7 +21,7 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <asp:Button ID="btnStockLogin" runat="server" OnClick="btnStockLogin_Click" style="position: relative" Text="Stock Login" />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <asp:Button ID="btnOrderLogin" runat="server" style="position: relative" Text="Order Login" />
+        <asp:Button ID="btnOrderLogin" runat="server" style="position: relative" Text="Order Login" OnClick="btnOrderLogin_Click" />
         <br />
         <br />
         <br />
