@@ -14,29 +14,59 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
     }
 
+
     protected void btnOK_Click1(object sender, EventArgs e)
     {
+
         // create a new instance of clsStaff
         clsStaff Staff = new clsStaff();
         // grab the Staff No
         Staff.StaffNo = Convert.ToInt32(txtStaffNo.Text);
         // grab the Staff's name
-        Staff.StaffName = txtStaffName.Text;
+        string StaffName = txtStaffName.Text;
         // grab the staffs role
-        Staff.StaffRole = txtStaffRole.Text;
+        string StaffRole = txtStaffRole.Text;
         //grab the staff's start date
-        Staff.StaffStart = Convert.ToDateTime(DateTime.Now);
+        string StaffStart = (txtStaffStart.Text);
         // grab the Staff's permission
         Staff.StaffPermission = chkPermission.Checked;
         //grab the staff's on shift data
         Staff.StaffOnShift = chkShift.Checked;
         // grab staff data deletion
         Staff.StaffDataDelete = chkDataDelete.Checked;
-        //store the Staff in the session object
-        Session["Staff"] = Staff;
-        //navigate to the view page
-        Response.Redirect("StaffViewer.aspx");
+        //variable to store any error message
+        string Error = "";
+        //validate the data
+        Error = Staff.Valid(StaffName, StaffRole, StaffStart);
+        if (Error == "")
+        {
+            // grab the Staff No
+            Staff.StaffNo = Convert.ToInt32(txtStaffNo.Text);
+            // grab the Staff's name
+            Staff.StaffName = txtStaffName.Text;
+            // grab the staffs role
+            Staff.StaffRole = txtStaffRole.Text;
+            //grab the staff's start date
+            Staff.StaffStart = Convert.ToDateTime(DateTime.Now);
+            // grab the Staff's permission
+            Staff.StaffPermission = chkPermission.Checked;
+            //grab the staff's on shift data
+            Staff.StaffOnShift = chkShift.Checked;
+            // grab staff data deletion
+            Staff.StaffDataDelete = chkDataDelete.Checked;
+            //store the Staff in the session object
+            Session["Staff"] = Staff;
+            //navigate to the view page
+            Response.Redirect("StaffViewer.aspx");
+        }
+        else
+        {
+            //display the error message
+            lblError.Text = Error;
+        }
+
     }
+
     protected void btnFind_Click(object sender, EventArgs e)
     {
         //create an instance of the Staff class
