@@ -6,7 +6,7 @@
 <head runat="server">
     <title></title>
 </head>
-<body style>
+<body>
     <form id="form1" runat="server">
         <div>
        </div>
@@ -35,6 +35,7 @@
         <p>
         <asp:Label ID="lblStaffRole" runat="server" style="z-index: 1; left: 23px; top: 117px; position: absolute" Text="Staff Role" height="19px" width="120px"></asp:Label>
         <asp:Button ID="btnFind" runat="server" OnClick="btnFind_Click" style="z-index: 1; left: 278px; top: 40px; position: absolute" Text="Find" />
+        <asp:Button ID="btnMainMenu" runat="server" OnClick="btnMainMenu_Click" style="z-index: 1; left: 90px; top: 390px; position: absolute" Text="Return to Main Menu" />
           <p>
     </form>
 </body>

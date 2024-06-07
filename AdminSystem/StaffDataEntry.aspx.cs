@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Web;
+using System.Web.Configuration;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using ClassLibrary;
 
 public partial class _1_DataEntry : System.Web.UI.Page
 {
+    Int32 StaffNo;
     protected void Page_Load(object sender, EventArgs e)
     {
 
@@ -92,6 +94,29 @@ public partial class _1_DataEntry : System.Web.UI.Page
             chkDataDelete.Checked = Staff.StaffDataDelete;
             
         }
+    }
+
+    void DisplayStaff()
+    {
+        //create an instance of the Staff book
+        clsStaffCollection StaffBook = new clsStaffCollection();
+        //find the record to update
+        StaffBook.ThisStaff.Find(StaffNo);
+        //display the data for the record
+        txtStaffNo.Text = StaffBook.ThisStaff.StaffNo.ToString();
+        chkDataDelete.Checked = StaffBook.ThisStaff.StaffDataDelete;
+        txtStaffStart.Text = StaffBook.ThisStaff.StaffStart.ToString();
+        chkPermission.Text = StaffBook.ThisStaff.StaffPermission.ToString();
+        txtStaffRole.Text = StaffBook.ThisStaff.StaffRole.ToString();
+        txtStaffName.Text = StaffBook.ThisStaff.StaffName.ToString();
+        chkShift.Text = StaffBook.ThisStaff.StaffOnShift.ToString();
+
+    }
+
+    protected void btnMainMenu_Click(object sender, EventArgs e)
+    {
+        //redirect to the main menu
+        Response.Redirect("TeamMainMenu.aspx");
     }
 
 }
